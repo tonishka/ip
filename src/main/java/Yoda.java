@@ -25,8 +25,11 @@ public class Yoda {
                 sc.close();
                 bye();
                 break;
+            } else if (input.equals("log")) {
+                // do nothing
             } else {
-                echo(input);
+                Quest q = new Quest(input);
+                System.out.println("Added new Quest: " + q.toString());
             }
         }
     }
@@ -38,15 +41,13 @@ public class Yoda {
             Thread.currentThread().interrupt();
         }
     }
+
     private static void echo(String msg) {
         System.out.println(msg);
     }
+
     private static void bye() {
         System.out.println("Hrrmmm. You, Jedi, farewell I bid.");
         System.out.println("******************************************");
     }
-    private static void add() {
-        System.out.println("Hrrmmm. You, Jedi, farewell I bid.");
-    }
-
 }
