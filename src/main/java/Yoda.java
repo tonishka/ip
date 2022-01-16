@@ -2,7 +2,7 @@ import java.util.Scanner;
 
 public class Yoda {
     public static void main(String[] args) {
-
+        Jedi jedi = new Jedi();
         System.out.println(">> Greetings Earthling.");
         pause();
         System.out.println(">> Yoda, I am.");
@@ -26,9 +26,10 @@ public class Yoda {
                 bye();
                 break;
             } else if (input.equals("log")) {
-                // do nothing
+                System.out.print(jedi.toString());
             } else {
                 Quest q = new Quest(input);
+                jedi.addQuest(q);
                 System.out.println("Added new Quest: " + q.toString());
             }
         }
@@ -36,7 +37,7 @@ public class Yoda {
 
     private static void pause() {
         try {
-            Thread.sleep(3000);
+            Thread.sleep(2500);
         } catch(InterruptedException ie) {
             Thread.currentThread().interrupt();
         }
