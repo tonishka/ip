@@ -17,6 +17,7 @@ public class Yoda {
         while (true) {
             String input = sc.nextLine();
             if (input.equals("bye")) {
+                sc.close();
                 bye();
                 break;
             } else {
