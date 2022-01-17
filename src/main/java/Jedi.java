@@ -23,7 +23,7 @@ public class Jedi {
         for (int i = 0; i < len; i++) {
             int index = i + 1;
             res += index + ". " +
-                    questList.get(i).statusToString() + "\n";
+                    questList.get(i).toString() + "\n";
         }
         return res;
     }

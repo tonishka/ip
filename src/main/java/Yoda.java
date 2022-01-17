@@ -26,28 +26,44 @@ public class Yoda {
             System.out.print(">> ");
             String input = sc.nextLine();
             String[] command = input.split(" ");
-            String arg = "";
-            for (int i = 1; i < command.length; i++) {
-                arg += command[i] + " ";
-            }
 
             if (command[0].equals("bye")) {
                 sc.close();
                 bye();
                 break;
-            } else if (command[0].equals("log")) {
+            }
+            else if (command[0].equals("log")) {
                 System.out.print(jedi.toString());
-            } else if (command[0].equals("mark")) {
+            }
+            else if (command[0].equals("mark")) {
                 int questID = Integer.parseInt(command[1]) - 1;
                 markDone(jedi, questID);
-            } else if (command[0].equals("unmark")) {
+            }
+            else if (command[0].equals("unmark")) {
                 int questID = Integer.parseInt(command[1]) - 1;
                 markUndone(jedi, questID);
-            } else if (command[0].equals("todo")){
-                ToDo toDo = new ToDo(arg);
+            }
+            else if (command[0].equals("todo")){
+                String argument = "";
+                for (int i = 1; i < command.length; i++) {
+                    argument += command[i] + " ";
+                }
+                ToDo toDo = new ToDo(argument);
                 jedi.addQuest(toDo);
                 System.out.println("New Quest added:" + toDo.toString());
-            } else {
+            }
+            else if (command[0].equals("event")) {
+                String[] period = input.split("/");
+                String[] desc = period[0].split(" ");
+                String s = "";
+                for (int i = 1; i < desc.length; i++) {
+                     s += desc[i] + " ";
+                }
+                Event e = new Event(s, period[1]);
+                jedi.addQuest(e);
+                System.out.println("New Quest added:" + e.toString());
+            }
+            else {
                 Quest q = new Quest(input);
                 jedi.addQuest(q);
                 System.out.println("Added new Quest: " + q.toString());
