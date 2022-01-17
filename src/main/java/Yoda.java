@@ -35,7 +35,9 @@ public class Yoda {
             } else if (command[0].equals("mark")) {
                 int questID = Integer.parseInt(command[1]) - 1;
                 markDone(jedi, questID);
-                // DO NOTHING
+            } else if (command[0].equals("unmark")) {
+                int questID = Integer.parseInt(command[1]) - 1;
+                markUndone(jedi, questID);
             } else {
                 Quest q = new Quest(input);
                 jedi.addQuest(q);
@@ -56,6 +58,12 @@ public class Yoda {
         j.getQuest(questID).completeQuest();
         System.out.println("Done: " + j.getQuest(questID).statusToString());
         System.out.println("For a quest accomplished you I congratulate.");
+    }
+
+    private static void markUndone(Jedi j, int questID) {
+        j.getQuest(questID).incompleteQuest();
+        System.out.println("Not done: " + j.getQuest(questID).statusToString());
+        System.out.println("Soldier on brave Jedi.");
     }
 
     private static void type(String text) {
