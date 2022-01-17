@@ -3,15 +3,17 @@ import java.util.Scanner;
 public class Yoda {
     public static void main(String[] args) {
         Jedi jedi = new Jedi();
-        System.out.println(">> Greetings Earthling.");
-        pause();
-        System.out.println(">> Yoda, I am.");
-        pause();
-        System.out.println(">> Defeat the Dark lord of Sith, we must.");
-        pause();
-        System.out.println(">> On this journey today must you embark.");
-        pause();
-        System.out.println(">> May the Force be with you, brave Jedi.");
+
+        type(">> Greetings Earthling.");
+        System.out.println();
+        type(">> Yoda, I am.");
+        System.out.println();
+        type(">> Defeat the Dark lord of Sith, we must.");
+        System.out.println();
+        type(">> On this journey today must you embark.");
+        System.out.println();
+        type(">> May the Force be with you, brave Jedi.");
+        System.out.println();
         pause();
         System.out.println("******************************************");
         System.out.println(">> Add quests by typing them in.");
@@ -37,9 +39,21 @@ public class Yoda {
 
     private static void pause() {
         try {
-            Thread.sleep(2500);
+            Thread.sleep(2000);
         } catch(InterruptedException ie) {
             Thread.currentThread().interrupt();
+        }
+    }
+
+    private static void type(String text) {
+        int i;
+        for(i = 0; i < text.length(); i++) {
+            System.out.print("" + text.charAt(i));
+            try {
+                Thread.sleep(200);
+            } catch (InterruptedException ie) {
+                Thread.currentThread().interrupt();
+            }
         }
     }
 
