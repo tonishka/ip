@@ -1,10 +1,18 @@
+import java.util.ArrayList;
+
 public class Quest {
     private String description;
     private int status;
+    private static final String done = "[X] ";
+    private static final String undo = "[ ] ";
 
     public Quest(String description) {
         this.description = description;
         this.status = 0;
+    }
+
+    public Quest() {
+        this.description = " ";
     }
 
     public void completeQuest() {
@@ -21,8 +29,6 @@ public class Quest {
     }
 
     public String statusToString() {
-        String done = "[X] ";
-        String undo = "[ ] ";
         if (this.status == 0) {
             return undo + this.description;
         }

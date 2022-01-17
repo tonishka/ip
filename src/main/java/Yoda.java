@@ -26,6 +26,11 @@ public class Yoda {
             System.out.print(">> ");
             String input = sc.nextLine();
             String[] command = input.split(" ");
+            String arg = "";
+            for (int i = 1; i < command.length; i++) {
+                arg += command[i] + " ";
+            }
+
             if (command[0].equals("bye")) {
                 sc.close();
                 bye();
@@ -38,6 +43,10 @@ public class Yoda {
             } else if (command[0].equals("unmark")) {
                 int questID = Integer.parseInt(command[1]) - 1;
                 markUndone(jedi, questID);
+            } else if (command[0].equals("todo")){
+                ToDo toDo = new ToDo(arg);
+                jedi.addQuest(toDo);
+                System.out.println("New Quest added:" + toDo.toString());
             } else {
                 Quest q = new Quest(input);
                 jedi.addQuest(q);
