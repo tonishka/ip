@@ -63,6 +63,17 @@ public class Yoda {
                 jedi.addQuest(e);
                 System.out.println("New Quest added:" + e.toString());
             }
+            else if (command[0].equals("deadline")) {
+                String[] period = input.split("/");
+                String[] desc = period[0].split(" ");
+                String s = "";
+                for (int i = 1; i < desc.length; i++) {
+                    s += desc[i] + " ";
+                }
+                Deadline d = new Deadline(s, period[1]);
+                jedi.addQuest(d);
+                System.out.println("New Quest added:" + d.toString());
+            }
             else {
                 Quest q = new Quest(input);
                 jedi.addQuest(q);
