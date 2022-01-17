@@ -18,17 +18,24 @@ public class Yoda {
         System.out.println("******************************************");
         System.out.println(">> Add quests by typing them in.");
         System.out.println(">> To view your quests type log.");
+        System.out.println(">> Type mark followed by the quest number to mark it as done.");
         System.out.println("******************************************");
 
         Scanner sc = new Scanner(System.in);
         while (true) {
+            System.out.print(">> ");
             String input = sc.nextLine();
-            if (input.equals("bye")) {
+            String[] command = input.split(" ");
+            if (command[0].equals("bye")) {
                 sc.close();
                 bye();
                 break;
-            } else if (input.equals("log")) {
+            } else if (command[0].equals("log")) {
                 System.out.print(jedi.toString());
+            } else if (command[0].equals("mark")) {
+                int questID = Integer.parseInt(command[1]) - 1;
+                markDone(jedi, questID);
+                // DO NOTHING
             } else {
                 Quest q = new Quest(input);
                 jedi.addQuest(q);
@@ -39,10 +46,16 @@ public class Yoda {
 
     private static void pause() {
         try {
-            Thread.sleep(2000);
+            Thread.sleep(1000);
         } catch(InterruptedException ie) {
             Thread.currentThread().interrupt();
         }
+    }
+
+    private static void markDone(Jedi j, int questID) {
+        j.getQuest(questID).completeQuest();
+        System.out.println("Done: " + j.getQuest(questID).statusToString());
+        System.out.println("For a quest accomplished you I congratulate.");
     }
 
     private static void type(String text) {
@@ -57,12 +70,9 @@ public class Yoda {
         }
     }
 
-    private static void echo(String msg) {
-        System.out.println(msg);
-    }
-
     private static void bye() {
-        System.out.println("Hrrmmm. You, Jedi, farewell I bid.");
+        type("Hrrmmm. You, Jedi, farewell I bid.");
+        System.out.println();
         System.out.println("******************************************");
     }
 }

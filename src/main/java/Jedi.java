@@ -11,6 +11,10 @@ public class Jedi {
         questList.add(q);
     }
 
+    public Quest getQuest(int questID) {
+        return questList.get(questID);
+    }
+
     @Override
     public String toString() {
         int len = questList.size();
@@ -18,7 +22,8 @@ public class Jedi {
         if (len == 0) return "";
         for (int i = 0; i < len; i++) {
             int index = i + 1;
-            res += index + ". " + questList.get(i).toString() + "\n";
+            res += index + ". " +
+                    questList.get(i).statusToString() + "\n";
         }
         return res;
     }
