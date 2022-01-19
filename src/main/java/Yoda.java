@@ -118,29 +118,43 @@ public class Yoda {
     }
 
     private static void event(String input, Jedi jedi) {
-        String[] period = input.split("/");
-        String[] desc = period[0].split(" ");
-        String s = "";
-        for (int i = 1; i < desc.length; i++) {
-            s += desc[i] + " ";
+        try {
+            String[] period = input.split("/");
+            String[] desc = period[0].split(" ");
+            String s = "";
+            if (desc.length <= 1) throw new YodaException("No event description.");
+            for (int i = 1; i < desc.length; i++) {
+                s += desc[i] + " ";
+            }
+            Event e = new Event(s, period[1]);
+            jedi.addQuest(e);
+            System.out.println("New Quest added:" + e.toString());
+            System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Please enter the command in the correct format.");
+        } catch (YodaException ye) {
+            System.out.println("Please enter a description for your quest.");
         }
-        Event e = new Event(s, period[1]);
-        jedi.addQuest(e);
-        System.out.println("New Quest added:" + e.toString());
-        System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
     }
 
     private static void deadline(String input, Jedi jedi) {
-        String[] period = input.split("/");
-        String[] desc = period[0].split(" ");
-        String s = "";
-        for (int i = 1; i < desc.length; i++) {
-            s += desc[i] + " ";
+        try {
+            String[] period = input.split("/");
+            String[] desc = period[0].split(" ");
+            String s = "";
+            if (desc.length <= 1) throw new YodaException("No deadline description.");
+            for (int i = 1; i < desc.length; i++) {
+                s += desc[i] + " ";
+            }
+            Deadline d = new Deadline(s, period[1]);
+            jedi.addQuest(d);
+            System.out.println("New Quest added:" + d.toString());
+            System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
+        } catch (ArrayIndexOutOfBoundsException ex) {
+            System.out.println("Please enter the command in the correct format.");
+        } catch (YodaException ye) {
+            System.out.println("Please enter a description for your quest.");
         }
-        Deadline d = new Deadline(s, period[1]);
-        jedi.addQuest(d);
-        System.out.println("New Quest added:" + d.toString());
-        System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
     }
 
     private static void markDone(Jedi j, String[] command) {

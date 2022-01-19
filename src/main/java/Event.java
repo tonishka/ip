@@ -1,5 +1,4 @@
 public class Event extends Quest {
-    String description;
     String period;
 
     public Event(String description, String period) {

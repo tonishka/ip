@@ -1,5 +1,4 @@
 public class ToDo extends Quest {
-    String description;
     public ToDo(String description) {
         super(description);
     }

@@ -1,5 +1,4 @@
 public class Deadline extends Quest {
-    String description;
     String period;
 
     public Deadline(String description, String period) {
