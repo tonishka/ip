@@ -15,6 +15,16 @@ public class Jedi {
         return questList.get(questID);
     }
 
+    public Quest deleteQuest(int questID) {
+        Quest q = this.getQuest(questID);
+        questList.remove(questID);
+        return q;
+    }
+
+    public int numQuests() {
+        return questList.size();
+    }
+
     @Override
     public String toString() {
         int len = questList.size();

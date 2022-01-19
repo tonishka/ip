@@ -10,7 +10,7 @@ public class Event extends Quest {
     @Override
     public String toString() {
         String res = "[E]" + super.statusToString()
-                + "(at " + period + ")";
+                + "(" + period + ")";
         return res;
     }
 }

@@ -1,1 +1,11 @@
-cook chicken
+todo cook chicken
+event club meeting /at 2100hrs
+deadline cs2103t assignment /by 20 January
+log
+mark 2
+log
+unmark 2
+log
+delete 3
+log
+bye
