@@ -1,11 +1,27 @@
+todo
 todo cook chicken
+log
+event club meeting 2100hrs
+event /2100hrs
+event club meeting
 event club meeting /at 2100hrs
+log
+deadline cs2103t assignment by 20 January
+deadline /by 20 January
+deadline cs2103t assignment
 deadline cs2103t assignment /by 20 January
 log
+mark ty
+mark 56
 mark 2
 log
+unmark ty
+unmark 67
 unmark 2
 log
-delete 3
+delete op
+delete 89
+delete 1
 log
+blah
 bye

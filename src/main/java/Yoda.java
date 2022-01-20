@@ -1,17 +1,5 @@
 import java.util.Scanner;
-
 public class Yoda {
-    private enum YodaCommands {
-        bye,
-        deadline,
-        delete,
-        event,
-        help,
-        log,
-        mark,
-        unmark,
-        todo;
-    }
     public static void main(String[] args) {
         type(">> Greetings Earthling.");
         System.out.println();

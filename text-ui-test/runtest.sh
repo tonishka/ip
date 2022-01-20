@@ -13,21 +13,19 @@ then
 fi
 
 # compile the code into the bin folder, terminates if error occurred
-if ! javac -cp ../src/main/java -Xlint:none -d ../bin ../src/main/java/*.java
+if ! javac -cp /Users/tonishkasingh/Desktop/ip/src/main/java/ -Xlint:none -d ../bin /Users/tonishkasingh/Desktop/ip/src/main/java/*.java
 then
     echo "********** BUILD FAILURE **********"
     exit 1
 fi
 
 # run the program, feed commands from input.txt file and redirect the output to the ACTUAL.TXT
-java -classpath ../bin Duke < input.txt > ACTUAL.TXT
+cd /Users/tonishkasingh/Desktop/ip/src/main/java
+java Yoda < /Users/tonishkasingh/Desktop/ip/text-ui-test/input.txt > /Users/tonishkasingh/Desktop/ip/text-ui-test/ACTUAL.TXT
 
-# convert to UNIX format
-cp EXPECTED.TXT EXPECTED-UNIX.TXT
-dos2unix ACTUAL.TXT EXPECTED-UNIX.TXT
 
 # compare the output to the expected output
-diff ACTUAL.TXT EXPECTED-UNIX.TXT
+diff /Users/tonishkasingh/Desktop/ip/text-ui-test/ACTUAL.TXT /Users/tonishkasingh/Desktop/ip/text-ui-test/EXPECTED.TXT
 if [ $? -eq 0 ]
 then
     echo "Test result: PASSED"
@@ -36,3 +34,4 @@ else
     echo "Test result: FAILED"
     exit 1
 fi
+
