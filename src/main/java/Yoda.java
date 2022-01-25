@@ -2,28 +2,22 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class Yoda {
-    public static void main(String[] args) throws IOException {
-        System.out.println(">> Greetings Earthling.");
-        System.out.println();
-        System.out.println(">> Yoda, I am.");
-        System.out.println();
-        System.out.println(">> Defeat the Dark lord of Sith, you must.");
-        System.out.println();
-        System.out.println(">> On this journey today must you embark.");
-        System.out.println();
-        System.out.println(">> May the Force be with you, brave Jedi.");
-        System.out.println();
-        //pause();
-        System.out.println("******************************************");
-        System.out.println(">> Type help to view commands.");
-        System.out.println("******************************************");
+    private Ui ui;
+    private Storage storage;
+    private QuestList questList;
 
-        Storage storage = new Storage();
-        QuestList questList = new QuestList(storage.load());
-        run(storage, questList);
+    public Yoda() {
+        this.ui = new Ui();
+        this.storage = new Storage();
+        this.questList = new QuestList(this.storage.load());
     }
 
-     private static void run(Storage storage, QuestList questList) {
+    public static void main(String[] args) throws IOException {
+        new Yoda().run();
+    }
+
+     private void run() {
+        ui.welcome();
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.print(">> ");
@@ -32,7 +26,7 @@ public class Yoda {
 
             if (command[0].equals("bye")) {
                 sc.close();
-                bye(storage, questList);
+                ui.bye(storage, questList);
                 break;
             } else if (command[0].equals("log")) {
                 log(questList);
@@ -49,34 +43,13 @@ public class Yoda {
             } else if (command[0].equals("delete")) {
                 delete(command, questList);
             } else if (command[0].equals("help")) {
-                help();
+                ui.help();
             } else {
                 System.out.println("Yoda knows not what this means.");
             }
         }
     }
 
-    private static void pause() {
-        try {
-            Thread.sleep(1000);
-        } catch(InterruptedException ie) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    private static void help() {
-        System.out.println("bye: Exit.");
-        System.out.println("deadline: Create a quest with a deadline.\n" +
-                "Example: deadline CS2103T Quiz /Monday 2359hrs");
-        System.out.println("delete: Delete a quest.");
-        System.out.println("event: Create an event-style quest.\n" +
-                "Example: event CS2101 Oral Presentation /4-6PM, 8 Feb");
-        System.out.println("help: View commands.");
-        System.out.println("log: View all quests.");
-        System.out.println("mark: Mark quest as complete.");
-        System.out.println("todo: Create a simple quest.");
-        System.out.println("unmark: Mark a complete quest as incomplete.");
-    }
 
     private static void log(QuestList questList) {
         System.out.println("To defeat the dark lord, " +
@@ -181,24 +154,5 @@ public class Yoda {
         } catch (IndexOutOfBoundsException ex) {
             System.out.println("Please enter a valid quest number.");
         }
-    }
-
-    private static void type(String text) {
-        int i;
-        for(i = 0; i < text.length(); i++) {
-            System.out.print("" + text.charAt(i));
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ie) {
-                Thread.currentThread().interrupt();
-            }
-        }
-    }
-
-    private static void bye(Storage storage, QuestList questList) {
-        storage.save(questList);
-        type("Hrrmmm. You, Jedi, farewell I bid.");
-        System.out.println();
-        System.out.println("******************************************");
     }
 }
