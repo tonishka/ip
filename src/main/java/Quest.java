@@ -1,3 +1,6 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 public class Quest {
     private String description;
     private int status;
@@ -5,6 +8,7 @@ public class Quest {
     private static final String undo = "[ ] ";
     private String type;
     private String period;
+    private LocalDate deadline;
 
     public Quest(String description) {
         this.description = description;
@@ -31,6 +35,11 @@ public class Quest {
 
     public Quest() {
         this.description = " ";
+    }
+
+    public Quest(String description, String date) {
+        this.description = description;
+        this.deadline = LocalDate.parse(date);
     }
 
     public void completeQuest() {
@@ -67,5 +76,9 @@ public class Quest {
             return undo + this.description;
         }
         return done + this.description;
+    }
+
+    public String dateToString() {
+        return deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
     }
 }
