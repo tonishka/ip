@@ -1,10 +1,10 @@
-import java.util.*;
+import java.util.ArrayList;
 
-public class Jedi {
+public class QuestList {
     private ArrayList<Quest> questList;
 
-    public Jedi() {
-        this.questList = new ArrayList<>();
+    public QuestList(ArrayList<Quest> questList) {
+        this.questList = questList;
     }
 
     public void addQuest(Quest q) {

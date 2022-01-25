@@ -1,15 +1,16 @@
 public class Event extends Quest {
-    String period;
+    public Event(String description, String period, int status) {
+        super(description, status, "E", period);
+    }
 
-    public Event(String description, String period) {
-        super(description);
-        this.period = period;
+    public String getDescription() {
+        return super.getDescription();
     }
 
     @Override
     public String toString() {
         String res = "[E]" + super.statusToString()
-                + "(" + period + ")";
+                + " (" + super.getPeriod() + ")";
         return res;
     }
 }
