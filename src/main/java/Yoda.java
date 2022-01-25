@@ -1,25 +1,29 @@
+import java.io.IOException;
 import java.util.Scanner;
+
 public class Yoda {
-    public static void main(String[] args) {
-        type(">> Greetings Earthling.");
+    public static void main(String[] args) throws IOException {
+        System.out.println(">> Greetings Earthling.");
         System.out.println();
-        type(">> Yoda, I am.");
+        System.out.println(">> Yoda, I am.");
         System.out.println();
-        type(">> Defeat the Dark lord of Sith, you must.");
+        System.out.println(">> Defeat the Dark lord of Sith, you must.");
         System.out.println();
-        type(">> On this journey today must you embark.");
+        System.out.println(">> On this journey today must you embark.");
         System.out.println();
-        type(">> May the Force be with you, brave Jedi.");
+        System.out.println(">> May the Force be with you, brave Jedi.");
         System.out.println();
-        pause();
+        //pause();
         System.out.println("******************************************");
         System.out.println(">> Type help to view commands.");
         System.out.println("******************************************");
-        Jedi jedi = new Jedi();
-        run(jedi);
+
+        Storage storage = new Storage();
+        QuestList questList = new QuestList(storage.load());
+        run(storage, questList);
     }
 
-    private static void run(Jedi jedi) {
+     private static void run(Storage storage, QuestList questList) {
         Scanner sc = new Scanner(System.in);
         while (true) {
             System.out.print(">> ");
@@ -28,22 +32,22 @@ public class Yoda {
 
             if (command[0].equals("bye")) {
                 sc.close();
-                bye();
+                bye(storage, questList);
                 break;
             } else if (command[0].equals("log")) {
-                log(jedi);
+                log(questList);
             } else if (command[0].equals("mark")) {
-                markDone(jedi,command);
+                markDone(questList,command);
             } else if (command[0].equals("unmark")) {
-                markUndone(jedi, command);
+                markUndone(questList, command);
             } else if (command[0].equals("todo")){
-                todo(command, jedi);
+                todo(command, questList);
             } else if (command[0].equals("event")) {
-                event(input, jedi);
+                event(input, questList);
             } else if (command[0].equals("deadline")) {
-                deadline(input, jedi);
+                deadline(input, questList);
             } else if (command[0].equals("delete")) {
-                delete(command, jedi);
+                delete(command, questList);
             } else if (command[0].equals("help")) {
                 help();
             } else {
@@ -74,13 +78,13 @@ public class Yoda {
         System.out.println("unmark: Mark a complete quest as incomplete.");
     }
 
-    private static void log(Jedi jedi) {
+    private static void log(QuestList questList) {
         System.out.println("To defeat the dark lord, " +
                 "following quests must you finish, Jedi:");
-        System.out.print(jedi.toString());
+        System.out.print(questList.toString());
     }
 
-    private static void todo(String[] command, Jedi jedi) {
+    private static void todo(String[] command, QuestList questList) {
         try {
             String argument = "";
             if (command.length <= 1) {
@@ -89,16 +93,16 @@ public class Yoda {
             for (int i = 1; i < command.length; i++) {
                 argument += command[i] + " ";
             }
-            ToDo toDo = new ToDo(argument);
-            jedi.addQuest(toDo);
+            ToDo toDo = new ToDo(argument, 0);
+            questList.addQuest(toDo);
             System.out.println("New Quest added:" + toDo.toString());
-            System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
+            System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
         } catch (YodaException ye) {
             System.out.println("Description of a todo must not be empty, Jedi.");
         }
     }
 
-    private static void event(String input, Jedi jedi) {
+    private static void event(String input, QuestList questList) {
         try {
             String[] period = input.split("/");
             String[] desc = period[0].split(" ");
@@ -107,10 +111,10 @@ public class Yoda {
             for (int i = 1; i < desc.length; i++) {
                 s += desc[i] + " ";
             }
-            Event e = new Event(s, period[1]);
-            jedi.addQuest(e);
+            Event e = new Event(s, period[1], 0);
+            questList.addQuest(e);
             System.out.println("New Quest added:" + e.toString());
-            System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
+            System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Please enter the command in the correct format.");
         } catch (YodaException ye) {
@@ -118,7 +122,7 @@ public class Yoda {
         }
     }
 
-    private static void deadline(String input, Jedi jedi) {
+    private static void deadline(String input, QuestList questList) {
         try {
             String[] period = input.split("/");
             String[] desc = period[0].split(" ");
@@ -127,10 +131,10 @@ public class Yoda {
             for (int i = 1; i < desc.length; i++) {
                 s += desc[i] + " ";
             }
-            Deadline d = new Deadline(s, period[1]);
-            jedi.addQuest(d);
+            Deadline d = new Deadline(s, period[1], 0);
+            questList.addQuest(d);
             System.out.println("New Quest added:" + d.toString());
-            System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
+            System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
         } catch (ArrayIndexOutOfBoundsException ex) {
             System.out.println("Please enter the command in the correct format.");
         } catch (YodaException ye) {
@@ -138,12 +142,12 @@ public class Yoda {
         }
     }
 
-    private static void markDone(Jedi j, String[] command) {
+    private static void markDone(QuestList questList, String[] command) {
         int questID;
         try {
             questID = Integer.parseInt(command[1]) - 1;
-            j.getQuest(questID).completeQuest();
-            System.out.println("Done: " + j.getQuest(questID).toString());
+            questList.getQuest(questID).completeQuest();
+            System.out.println("Done: " + questList.getQuest(questID).toString());
             System.out.println("For a quest accomplished you I congratulate.");
         } catch (NumberFormatException nfe) {
             System.out.println("Please enter a valid quest number.");
@@ -152,12 +156,12 @@ public class Yoda {
         }
     }
 
-    private static void markUndone(Jedi j, String[] command) {
+    private static void markUndone(QuestList questList, String[] command) {
         int questID;
         try {
             questID = Integer.parseInt(command[1]) - 1;
-            j.getQuest(questID).incompleteQuest();
-            System.out.println("Not done: " + j.getQuest(questID).toString());
+            questList.getQuest(questID).incompleteQuest();
+            System.out.println("Not done: " + questList.getQuest(questID).toString());
             System.out.println("Soldier on brave Jedi.");
         } catch (NumberFormatException nfe) {
             System.out.println("Please enter a valid quest number.");
@@ -166,12 +170,12 @@ public class Yoda {
         }
     }
 
-    private static void delete(String[] command, Jedi jedi) {
+    private static void delete(String[] command, QuestList questList) {
         try {
             int questID = Integer.parseInt(command[1]) - 1;
-            Quest q = jedi.deleteQuest(questID);
+            Quest q = questList.deleteQuest(questID);
             System.out.println("Quest removed: " + q.toString());
-            System.out.println(jedi.numQuests() + " Quests have you now, Jedi.");
+            System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
         } catch (NumberFormatException nfe) {
             System.out.println("Please enter a valid quest number.");
         } catch (IndexOutOfBoundsException ex) {
@@ -191,7 +195,8 @@ public class Yoda {
         }
     }
 
-    private static void bye() {
+    private static void bye(Storage storage, QuestList questList) {
+        storage.save(questList);
         type("Hrrmmm. You, Jedi, farewell I bid.");
         System.out.println();
         System.out.println("******************************************");
