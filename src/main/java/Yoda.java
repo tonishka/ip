@@ -30,30 +30,23 @@ public class Yoda {
                 sc.close();
                 bye();
                 break;
-            }
-            else if (command[0].equals("log")) {
+            } else if (command[0].equals("log")) {
                 log(jedi);
-            }
-            else if (command[0].equals("mark")) {
+            } else if (command[0].equals("mark")) {
                 markDone(jedi,command);
-            }
-            else if (command[0].equals("unmark")) {
+            } else if (command[0].equals("unmark")) {
                 markUndone(jedi, command);
-            }
-            else if (command[0].equals("todo")){
+            } else if (command[0].equals("todo")){
                 todo(command, jedi);
-            }
-            else if (command[0].equals("event")) {
+            } else if (command[0].equals("event")) {
                 event(input, jedi);
-            }
-            else if (command[0].equals("deadline")) {
+            } else if (command[0].equals("deadline")) {
                 deadline(input, jedi);
             } else if (command[0].equals("delete")) {
                 delete(command, jedi);
             } else if (command[0].equals("help")) {
                 help();
-            }
-            else {
+            } else {
                 System.out.println("Yoda knows not what this means.");
             }
         }
