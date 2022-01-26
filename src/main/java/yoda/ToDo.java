@@ -1,3 +1,7 @@
+package yoda;
+
+import yoda.Quest;
+
 public class ToDo extends Quest {
     public ToDo(String description) {
         super(description);

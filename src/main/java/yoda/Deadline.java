@@ -1,3 +1,5 @@
+package yoda;
+
 public class Deadline extends Quest {
     public Deadline(String description, String date) {
         super(description, date);

@@ -1,3 +1,7 @@
+package yoda;
+
+import yoda.Quest;
+
 import java.util.ArrayList;
 
 public class QuestList {

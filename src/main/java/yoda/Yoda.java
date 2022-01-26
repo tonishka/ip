@@ -1,3 +1,5 @@
+package yoda;
+
 import java.io.IOException;
 import java.util.Scanner;
 
@@ -53,7 +55,7 @@ public class Yoda {
             } else if (command.equals("help")) {
                 ui.help();
             } else {
-                System.out.println("Yoda knows not what this means.");
+                System.out.println("yoda.Yoda knows not what this means.");
             }
         }
     }
@@ -67,21 +69,21 @@ public class Yoda {
     private void todo(String desc) {
         ToDo toDo = new ToDo(desc, 0);
         questList.addQuest(toDo);
-        System.out.println("New Quest added:" + toDo.toString());
+        System.out.println("New yoda.Quest added:" + toDo.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
     private void event(String[] arr) {
         Event e = new Event(arr[0], arr[1], 0);
         questList.addQuest(e);
-        System.out.println("New Quest added:" + e.toString());
+        System.out.println("New yoda.Quest added:" + e.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
     private void deadline(String[] arr) {
         Deadline d = new Deadline(arr[0], arr[1]);
         questList.addQuest(d);
-        System.out.println("New Quest added:" + d.toString());
+        System.out.println("New yoda.Quest added:" + d.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
@@ -99,7 +101,7 @@ public class Yoda {
 
     private void delete(int questID) {
         Quest q = questList.deleteQuest(questID);
-        System.out.println("Quest removed: " + q.toString());
+        System.out.println("yoda.Quest removed: " + q.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 }

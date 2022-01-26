@@ -1,5 +1,5 @@
 >> Greetings Earthling.
->> Yoda, I am.
+>> yoda.Yoda, I am.
 >> Defeat the Dark lord of Sith, you must.
 >> On this journey today must you embark.
 >> May the Force be with you, brave Jedi.
@@ -7,14 +7,14 @@
 >> Type help to view commands.
 ******************************************
 >> Description of a todo must not be empty, Jedi.
->> New Quest added:[T][ ] cook chicken
+>> New yoda.Quest added:[T][ ] cook chicken
 1 Quests have you now, Jedi.
 >> To defeat the dark lord, following quests must you finish, Jedi:
 1. [T][ ] cook chicken
 >> Please enter the command in the correct format.
 >> Please enter a description for your quest.
 >> Please enter the command in the correct format.
->> New Quest added:[E][ ] club meeting (at 2100hrs)
+>> New yoda.Quest added:[E][ ] club meeting (at 2100hrs)
 2 Quests have you now, Jedi.
 >> To defeat the dark lord, following quests must you finish, Jedi:
 1. [T][ ] cook chicken
@@ -22,7 +22,7 @@
 >> Please enter the command in the correct format.
 >> Please enter a description for your quest.
 >> Please enter the command in the correct format.
->> New Quest added:[D][ ] cs2103t assignment (by 20 January)
+>> New yoda.Quest added:[D][ ] cs2103t assignment (by 20 January)
 3 Quests have you now, Jedi.
 >> To defeat the dark lord, following quests must you finish, Jedi:
 1. [T][ ] cook chicken
@@ -46,12 +46,12 @@ Soldier on brave Jedi.
 3. [D][ ] cs2103t assignment (by 20 January)
 >> Please enter a valid quest number.
 >> Please enter a valid quest number.
->> Quest removed: [T][ ] cook chicken
+>> yoda.Quest removed: [T][ ] cook chicken
 2 Quests have you now, Jedi.
 >> To defeat the dark lord, following quests must you finish, Jedi:
 1. [E][ ] club meeting (at 2100hrs)
 2. [D][ ] cs2103t assignment (by 20 January)
->> Yoda knows not what this means.
+>> yoda.Yoda knows not what this means.
 >> Hrrmmm. You, Jedi, farewell I bid.
 ******************************************
 

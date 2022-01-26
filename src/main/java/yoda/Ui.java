@@ -1,10 +1,15 @@
+package yoda;
+
+import yoda.QuestList;
+import yoda.Storage;
+
 public class Ui {
     public Ui() {}
 
     public void welcome() {
         type(">> Greetings Earthling.");
         System.out.println();
-        type(">> Yoda, I am.");
+        type(">> yoda.Yoda, I am.");
         System.out.println();
         type(">> Defeat the Dark lord of Sith, you must.");
         System.out.println();

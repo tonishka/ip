@@ -1,3 +1,5 @@
+package yoda;
+
 public class Event extends Quest {
     public Event(String description, String period, int status) {
         super(description, status, "E", period);
