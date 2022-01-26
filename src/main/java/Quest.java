@@ -40,6 +40,8 @@ public class Quest {
     public Quest(String description, String date) {
         this.description = description;
         this.deadline = LocalDate.parse(date);
+        this.status = 0;
+        this.type = "D";
     }
 
     public void completeQuest() {

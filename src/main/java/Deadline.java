@@ -1,10 +1,6 @@
 public class Deadline extends Quest {
-    public Deadline(String description, String period, int status) {
-        super(description, status, "D", period);
-    }
-
-    public Deadline(String description, String period) {
-        super(description);
+    public Deadline(String description, String date) {
+        super(description, date);
     }
 
     public String getDescription() {
@@ -14,7 +10,7 @@ public class Deadline extends Quest {
     @Override
     public String toString() {
         String res = "[D]" + super.statusToString()
-                + " (" + super.getPeriod() + ")";
+                + " (" + super.dateToString() + ")";
         return res;
     }
 }
