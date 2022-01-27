@@ -1,8 +1,5 @@
 package yoda;
 
-import yoda.QuestList;
-import yoda.Storage;
-
 public class Ui {
     public Ui() {}
 

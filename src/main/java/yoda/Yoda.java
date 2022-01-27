@@ -1,6 +1,5 @@
 package yoda;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Yoda {
@@ -14,7 +13,7 @@ public class Yoda {
         this.questList = new QuestList(this.storage.load());
     }
 
-    public static void main(String[] args) throws IOException {
+    public static void main(String[] args) {
         new Yoda().run();
     }
 
@@ -60,8 +59,6 @@ public class Yoda {
                 storage.save(questList);
             } else if (command.equals("help")) {
                 ui.help();
-            } else if (command.equals("find")) {
-
             } else {
                 System.out.println("yoda.Yoda knows not what this means.");
             }
@@ -111,9 +108,5 @@ public class Yoda {
         Quest q = questList.deleteQuest(questID);
         System.out.println("yoda.Quest removed: " + q.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
-    }
-
-    private void find() {
-        
     }
 }
