@@ -1,11 +1,16 @@
 package yoda;
 
-import yoda.QuestList;
-import yoda.Storage;
+/**
+ * Encapsulates the user interface for the chatbot.
+ * @author Tonishka Singh
+ */
 
 public class Ui {
     public Ui() {}
 
+    /**
+     * Prints the welcome message when user launches the application.
+     */
     public void welcome() {
         type(">> Greetings Earthling.");
         System.out.println();
@@ -43,6 +48,9 @@ public class Ui {
         }
     }
 
+    /**
+     * Prints out the help message for user.
+     */
     public void help() {
         System.out.println("bye: Exit.");
         System.out.println("deadline: Create a quest with a deadline.\n" +
@@ -57,6 +65,11 @@ public class Ui {
         System.out.println("unmark: Mark a complete quest as incomplete.");
     }
 
+    /**
+     * Terminates the program and writes back data to hard disk.
+     * @param storage
+     * @param questList
+     */
     public void bye(Storage storage, QuestList questList) {
         storage.save(questList);
         type("Hrrmmm. You, Jedi, farewell I bid.");

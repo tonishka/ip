@@ -3,6 +3,11 @@ package yoda;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Represents the chatbot.
+ * @author Tonishka Singh
+ */
+
 public class Yoda {
     private Ui ui;
     private Storage storage;

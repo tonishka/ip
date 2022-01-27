@@ -1,6 +1,9 @@
 package yoda;
 
-import yoda.Quest;
+/**
+ * Represents a list of all existing quests.
+ * @author Tonishka Singh
+ */
 
 import java.util.ArrayList;
 
