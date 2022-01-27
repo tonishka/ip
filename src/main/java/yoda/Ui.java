@@ -4,7 +4,6 @@ package yoda;
  * Encapsulates the user interface for the chatbot.
  * @author Tonishka Singh
  */
-
 public class Ui {
     public Ui() {}
 
@@ -14,7 +13,7 @@ public class Ui {
     public void welcome() {
         type(">> Greetings Earthling.");
         System.out.println();
-        type(">> yoda.Yoda, I am.");
+        type(">> Yoda, I am.");
         System.out.println();
         type(">> Defeat the Dark lord of Sith, you must.");
         System.out.println();
@@ -67,8 +66,8 @@ public class Ui {
 
     /**
      * Terminates the program and writes back data to hard disk.
-     * @param storage
-     * @param questList
+     * @param storage Storage where the data is located.
+     * @param questList Data to write back to file.
      */
     public void bye(Storage storage, QuestList questList) {
         storage.save(questList);
