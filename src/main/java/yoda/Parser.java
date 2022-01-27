@@ -1,8 +1,18 @@
 package yoda;
 
+/**
+ * Parser object to make sense of user command.
+ * @author Tonishka Singh
+ */
+
 public class Parser {
     public Parser() {}
 
+    /**
+     * Tokenizes and cleans the input by removing extraneous spaces.
+     * @param input Input string from user to clean.
+     * @return Array of cleaned String arguments.
+     */
     public String[] clean(String input) {
         String[] arr = input.split(" ");
         for (int i = 0; i < arr.length; i++) {
@@ -30,6 +40,11 @@ public class Parser {
         return desc;
     }
 
+    /**
+     * Parses an event command to extract the necessary arguments.
+     * @param input String input from the user.
+     * @return String array of all arguments.
+     */
     public String[] parseEvent(String input) {
         String[] res = new String[2];
         try {
@@ -52,6 +67,11 @@ public class Parser {
         return res;
     }
 
+    /**
+     * Parses a deadline command to extract the necessary arguments.
+     * @param input String input from the user.
+     * @return String array of all arguments.
+     */
     public String[] parseDeadline(String input) {
         String[] res = new String[2];
         try {
@@ -72,6 +92,11 @@ public class Parser {
         return res;
     }
 
+    /**
+     * Parses a mark/unmark/delete command to extract the quest to be updated.
+     * @param arr String array of user input.
+     * @return The index of the quest to be updated.
+     */
     public int parseMark(String[] arr) {
         int questID = -1;
         try {

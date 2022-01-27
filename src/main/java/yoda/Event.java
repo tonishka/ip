@@ -1,5 +1,10 @@
 package yoda;
 
+/**
+ * Represents a quest of type event.
+ * @author Tonishka Singh
+ */
+
 public class Event extends Quest {
     public Event(String description, String period, int status) {
         super(description, status, "E", period);

@@ -3,6 +3,11 @@ package yoda;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Represents a quest.
+ * @author Tonishka Singh
+ */
+
 public class Quest {
     private String description;
     private int status;
