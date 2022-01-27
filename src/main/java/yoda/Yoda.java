@@ -37,21 +37,27 @@ public class Yoda {
             } else if (command.equals("mark")) {
                 int questID = parser.parseMark(args);
                 markDone(questID);
+                storage.save(questList);
             } else if (command.equals("unmark")) {
                 int questID = parser.parseMark(args);
                 markUndone(questID);
+                storage.save(questList);
             } else if (command.equals("todo")){
                 String desc = parser.getDescriptionToDo(args);
                 todo(desc);
+                storage.save(questList);
             } else if (command.equals("event")) {
                 String[] argsEvent = parser.parseEvent(input);
                 event(argsEvent);
+                storage.save(questList);
             } else if (command.equals("deadline")) {
                 String[] argsDeadline = parser.parseDeadline(input);
                 deadline(argsDeadline);
+                storage.save(questList);
             } else if (command.equals("delete")) {
                 int questID = parser.parseMark(args);
                 delete(questID);
+                storage.save(questList);
             } else if (command.equals("help")) {
                 ui.help();
             } else {
