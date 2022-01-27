@@ -60,6 +60,8 @@ public class Yoda {
                 storage.save(questList);
             } else if (command.equals("help")) {
                 ui.help();
+            } else if (command.equals("find")) {
+
             } else {
                 System.out.println("yoda.Yoda knows not what this means.");
             }
@@ -109,5 +111,9 @@ public class Yoda {
         Quest q = questList.deleteQuest(questID);
         System.out.println("yoda.Quest removed: " + q.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
+    }
+
+    private void find() {
+        
     }
 }
