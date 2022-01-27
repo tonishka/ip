@@ -32,6 +32,20 @@ public class QuestList {
         return questList.size();
     }
 
+    public ArrayList<Quest> find(String keyword) {
+        ArrayList<Quest> result = new ArrayList<>();
+        Parser parser = new Parser();
+        for (int i = 0; i < this.questList.size(); i++) {
+            String[] arr = parser.clean(questList.get(i).getDescription());
+            for (int j = 0; j < arr.length; j++) {
+                if (arr[j].equals(keyword)) {
+                    result.add(questList.get(i));
+                }
+            }
+        }
+        return result;
+    }
+
     @Override
     public String toString() {
         int len = questList.size();

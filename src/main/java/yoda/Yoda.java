@@ -1,12 +1,12 @@
 package yoda;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
  * Represents the chatbot.
  * @author Tonishka Singh
  */
-
 public class Yoda {
     private Ui ui;
     private Storage storage;
@@ -64,6 +64,8 @@ public class Yoda {
                 storage.save(questList);
             } else if (command.equals("help")) {
                 ui.help();
+            } else if (command.equals("find")) {
+                find(parser.parseFind(args));
             } else {
                 System.out.println("yoda.Yoda knows not what this means.");
             }
@@ -114,4 +116,16 @@ public class Yoda {
         System.out.println("yoda.Quest removed: " + q.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
+
+    private void find(String keyword) {
+        ArrayList<Quest> result = questList.find(keyword);
+        if (result.size() == 0) {
+            System.out.println("No task match your search, Jedi.");
+            return;
+        }
+        QuestList q = new QuestList(result);
+        System.out.println("These are quests you requested, Jedi:");
+        System.out.print(q.toString());
+    }
+
 }

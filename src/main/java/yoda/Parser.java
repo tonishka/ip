@@ -108,4 +108,8 @@ public class Parser {
         }
         return questID;
     }
+
+    public String parseFind(String[] args) {
+        return args[1];
+    }
 }
