@@ -1,6 +1,7 @@
 package yoda;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Yoda {
@@ -61,7 +62,7 @@ public class Yoda {
             } else if (command.equals("help")) {
                 ui.help();
             } else if (command.equals("find")) {
-
+                find(parser.parseFind(args));
             } else {
                 System.out.println("yoda.Yoda knows not what this means.");
             }
@@ -113,7 +114,14 @@ public class Yoda {
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
-    private void find() {
-        
+    private void find(String keyword) {
+        ArrayList<Quest> result = questList.find(keyword);
+        if (result.size() == 0) {
+            System.out.println("No task match your search, Jedi.");
+            return;
+        }
+        QuestList q = new QuestList(result);
+        System.out.println("These are quests you requested, Jedi:");
+        System.out.print(q.toString());
     }
 }

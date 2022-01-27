@@ -9,7 +9,7 @@ public class Ui {
     public void welcome() {
         type(">> Greetings Earthling.");
         System.out.println();
-        type(">> yoda.Yoda, I am.");
+        type(">> Yoda, I am.");
         System.out.println();
         type(">> Defeat the Dark lord of Sith, you must.");
         System.out.println();
