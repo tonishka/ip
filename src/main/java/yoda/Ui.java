@@ -11,23 +11,17 @@ public class Ui {
      * Prints the welcome message when user launches the application.
      */
     public void welcome() {
-        type(">> Greetings Earthling.");
-        System.out.println();
-        type(">> Yoda, I am.");
-        System.out.println();
-        type(">> Defeat the Dark lord of Sith, you must.");
-        System.out.println();
-        type(">> On this journey today must you embark.");
-        System.out.println();
-        type(">> May the Force be with you, brave Jedi.");
-        System.out.println();
-        pause();
+        System.out.println(">> Greetings Earthling.");
+        System.out.println(">> Yoda, I am.");
+        System.out.println(">> Defeat the Dark lord of Sith, you must.");
+        System.out.println(">> On this journey today must you embark.");
+        System.out.println(">> May the Force be with you, brave Jedi.");
         System.out.println("******************************************");
         System.out.println(">> Type help to view commands.");
         System.out.println("******************************************");
     }
 
-    private void pause() {
+    /**private void pause() {
         try {
             Thread.sleep(1000);
         } catch(InterruptedException ie) {
@@ -45,7 +39,7 @@ public class Ui {
                 Thread.currentThread().interrupt();
             }
         }
-    }
+    }**/
 
     /**
      * Prints out the help message for user.
@@ -53,7 +47,7 @@ public class Ui {
     public void help() {
         System.out.println("bye: Exit.");
         System.out.println("deadline: Create a quest with a deadline.\n" +
-                "Example: deadline CS2103T Quiz /Monday 2359hrs");
+                "Example: deadline CS2103T Quiz /31/12/2022 23:59");
         System.out.println("delete: Delete a quest.");
         System.out.println("event: Create an event-style quest.\n" +
                 "Example: event CS2101 Oral Presentation /4-6PM, 8 Feb");
@@ -71,7 +65,7 @@ public class Ui {
      */
     public void bye(Storage storage, QuestList questList) {
         storage.save(questList);
-        type("Hrrmmm. You, Jedi, farewell I bid.");
+        System.out.println("Hrrmmm. You, Jedi, farewell I bid.");
         System.out.println();
         System.out.println("******************************************");
     }

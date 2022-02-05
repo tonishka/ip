@@ -14,10 +14,8 @@ public class Parser {
      * @return Array of cleaned String arguments.
      */
     public String[] clean(String input) {
-        String[] arr = input.split(" ");
-        for (int i = 0; i < arr.length; i++) {
-            arr[i] = arr[i].trim();
-        }
+        input = input.trim();
+        String[] arr = input.split("\\s+");
         return arr;
     }
 
@@ -25,17 +23,13 @@ public class Parser {
         return arr[0];
     }
 
-    public String getDescriptionToDo(String[] arr) {
+    public String getDescriptionToDo(String[] arr) throws YodaException {
         String desc = "";
-        try {
-            if (arr.length <= 1) {
-                throw new YodaException("Missing description.");
-            }
-            for (int i = 1; i < arr.length; i++) {
-                desc += arr[i] + " ";
-            }
-        } catch (YodaException ye) {
-            System.out.println("Description of a todo must not be empty, Jedi.");
+        if (arr.length <= 1) {
+            throw new YodaException("Missing description.");
+        }
+        for (int i = 1; i < arr.length; i++) {
+            desc += arr[i] + " ";
         }
         return desc;
     }
@@ -45,24 +39,17 @@ public class Parser {
      * @param input String input from the user.
      * @return String array of all arguments.
      */
-    public String[] parseEvent(String input) {
+    public String[] parseEvent(String input) throws YodaException, ArrayIndexOutOfBoundsException {
         String[] res = new String[2];
-        try {
-            String[] period = input.split("/");
-            String[] desc = period[0].split(" ");
-            String s = "";
-            if (desc.length <= 1) throw new YodaException("No event description.");
-            for (int i = 1; i < desc.length; i++) {
-                s += desc[i] + " ";
-            }
-            res[0] = s;
-            res[1] = period[1];
-
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("Please enter the command in the correct format.");
-        } catch (YodaException ye) {
-            System.out.println("Please enter a description for your quest.");
+        String[] period = input.split("/");
+        String[] desc = period[0].split(" ");
+        String s = "";
+        if (desc.length <= 1) throw new YodaException("No event description.");
+        for (int i = 1; i < desc.length; i++) {
+            s += desc[i] + " ";
         }
+        res[0] = s;
+        res[1] = period[1];
 
         return res;
     }
@@ -72,23 +59,18 @@ public class Parser {
      * @param input String input from the user.
      * @return String array of all arguments.
      */
-    public String[] parseDeadline(String input) {
+    public String[] parseDeadline(String input) throws YodaException, ArrayIndexOutOfBoundsException {
         String[] res = new String[2];
-        try {
-            String[] period = input.split("/");
-            String[] desc = period[0].split(" ");
-            String s = "";
-            if (desc.length <= 1) throw new YodaException("No deadline description.");
-            for (int i = 1; i < desc.length; i++) {
-                s += desc[i] + " ";
-            }
-            res[0] = s;
-            res[1] = period[1];
-        } catch (ArrayIndexOutOfBoundsException ex) {
-            System.out.println("Please enter the command in the correct format.");
-        } catch (YodaException ye) {
-            System.out.println("Please enter a description for your quest.");
+        String[] period = input.split("/");
+        String[] desc = period[0].split(" ");
+        String s = "";
+        if (desc.length <= 1) throw new YodaException("No deadline description.");
+        for (int i = 1; i < desc.length; i++) {
+            s += desc[i] + " ";
         }
+        res[0] = s;
+        res[1] = period[1];
+
         return res;
     }
 
@@ -97,15 +79,9 @@ public class Parser {
      * @param arr String array of user input.
      * @return The index of the quest to be updated.
      */
-    public int parseMark(String[] arr) {
+    public int parseMark(String[] arr) throws NumberFormatException, IndexOutOfBoundsException {
         int questID = -1;
-        try {
-            questID = Integer.parseInt(arr[1]) - 1;
-        } catch (NumberFormatException nfe) {
-            System.out.println("Please enter a valid quest number.");
-        } catch (IndexOutOfBoundsException ex) {
-            System.out.println("Please enter a valid quest number.");
-        }
+        questID = Integer.parseInt(arr[1]) - 1;
         return questID;
     }
 

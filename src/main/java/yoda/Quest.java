@@ -1,6 +1,7 @@
 package yoda;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -11,11 +12,11 @@ import java.time.format.DateTimeFormatter;
 public class Quest {
     private String description;
     private int status;
-    private static final String done = "[X] ";
-    private static final String undo = "[ ] ";
+    private static final String DONE = "[X] ";
+    private static final String UNDO = "[ ] ";
     private String type;
     private String period;
-    private LocalDate deadline;
+    private LocalDateTime deadline;
 
     public Quest(String description) {
         this.description = description;
@@ -46,7 +47,7 @@ public class Quest {
 
     public Quest(String description, String date) {
         this.description = description;
-        this.deadline = LocalDate.parse(date);
+        this.deadline = LocalDateTime.parse(date);
         this.status = 0;
         this.type = "D";
     }
@@ -82,12 +83,13 @@ public class Quest {
 
     public String statusToString() {
         if (this.status == 0) {
-            return undo + this.description;
+            return UNDO + this.description;
         }
-        return done + this.description;
+        return DONE + this.description;
     }
 
     public String dateToString() {
-        return deadline.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
+        return deadline.format(dtf);
     }
 }

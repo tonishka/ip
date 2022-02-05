@@ -39,35 +39,70 @@ public class Yoda {
             } else if (command.equals("log")) {
                 log();
             } else if (command.equals("mark")) {
-                int questID = parser.parseMark(args);
-                markDone(questID);
-                storage.save(questList);
+                try {
+                    int questID = parser.parseMark(args);
+                    markDone(questID);
+                    storage.save(questList);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Please enter a valid quest number.");
+                } catch (IndexOutOfBoundsException ibe) {
+                    System.out.println("Please enter a valid quest number.");
+                }
             } else if (command.equals("unmark")) {
-                int questID = parser.parseMark(args);
-                markUndone(questID);
-                storage.save(questList);
+                try {
+                    int questID = parser.parseMark(args);
+                    markUndone(questID);
+                    storage.save(questList);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Please enter a valid quest number.");
+                } catch (IndexOutOfBoundsException ibe) {
+                    System.out.println("Please enter a valid quest number.");
+                }
             } else if (command.equals("todo")){
-                String desc = parser.getDescriptionToDo(args);
-                todo(desc);
-                storage.save(questList);
+                try {
+                    String desc = parser.getDescriptionToDo(args);
+                    todo(desc);
+                    storage.save(questList);
+                } catch (YodaException ye) {
+                    System.out.println("Description of a todo must not be empty, Jedi.");
+                }
+
             } else if (command.equals("event")) {
-                String[] argsEvent = parser.parseEvent(input);
-                event(argsEvent);
-                storage.save(questList);
+                try {
+                    String[] argsEvent = parser.parseEvent(input);
+                    event(argsEvent);
+                    storage.save(questList);
+                } catch (YodaException ye) {
+                    System.out.println("Please enter a description for your quest.");
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    System.out.println("Please enter the command in the correct format.");
+                }
             } else if (command.equals("deadline")) {
-                String[] argsDeadline = parser.parseDeadline(input);
-                deadline(argsDeadline);
-                storage.save(questList);
+                try {
+                    String[] argsDeadline = parser.parseDeadline(input);
+                    deadline(argsDeadline);
+                    storage.save(questList);
+                } catch (YodaException ye) {
+                    System.out.println("Please enter a description for your quest.");
+                } catch (ArrayIndexOutOfBoundsException ex) {
+                    System.out.println("Please enter the command in the correct format.");
+                }
             } else if (command.equals("delete")) {
-                int questID = parser.parseMark(args);
-                delete(questID);
-                storage.save(questList);
+                try {
+                    int questID = parser.parseMark(args);
+                    delete(questID);
+                    storage.save(questList);
+                } catch (NumberFormatException nfe) {
+                    System.out.println("Please enter a valid quest number.");
+                } catch (IndexOutOfBoundsException ibe) {
+                    System.out.println("Please enter a valid quest number.");
+                }
             } else if (command.equals("help")) {
                 ui.help();
             } else if (command.equals("find")) {
                 find(parser.parseFind(args));
             } else {
-                System.out.println("yoda.Yoda knows not what this means.");
+                System.out.println("Yoda knows not what this means.");
             }
         }
     }
@@ -81,21 +116,21 @@ public class Yoda {
     private void todo(String desc) {
         ToDo toDo = new ToDo(desc, 0);
         questList.addQuest(toDo);
-        System.out.println("New yoda.Quest added:" + toDo.toString());
+        System.out.println("New Quest added:" + toDo.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
     private void event(String[] arr) {
         Event e = new Event(arr[0], arr[1], 0);
         questList.addQuest(e);
-        System.out.println("New yoda.Quest added:" + e.toString());
+        System.out.println("New Quest added:" + e.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
     private void deadline(String[] arr) {
         Deadline d = new Deadline(arr[0], arr[1]);
         questList.addQuest(d);
-        System.out.println("New yoda.Quest added:" + d.toString());
+        System.out.println("New Quest added:" + d.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
@@ -113,7 +148,7 @@ public class Yoda {
 
     private void delete(int questID) {
         Quest q = questList.deleteQuest(questID);
-        System.out.println("yoda.Quest removed: " + q.toString());
+        System.out.println("Quest removed: " + q.toString());
         System.out.println(questList.numQuests() + " Quests have you now, Jedi.");
     }
 
@@ -125,7 +160,7 @@ public class Yoda {
         }
         QuestList q = new QuestList(result);
         System.out.println("These are quests you requested, Jedi:");
-        System.out.print(q.toString());
+        System.out.print(q);
     }
 
 }
