@@ -17,7 +17,7 @@ public class Deadline extends Quest {
     @Override
     public String toString() {
         String res = "[D]" + super.statusToString() +
-                " (" + super.dateToString() + ")";
+                "(" + super.dateToString() + ")";
         return res;
     }
 }

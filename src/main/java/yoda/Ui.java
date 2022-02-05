@@ -47,7 +47,7 @@ public class Ui {
     public void help() {
         System.out.println("bye: Exit.");
         System.out.println("deadline: Create a quest with a deadline.\n" +
-                "Example: deadline CS2103T Quiz /31/12/2022 23:59");
+                "Example: deadline CS2103T Quiz /2022-12-31");
         System.out.println("delete: Delete a quest.");
         System.out.println("event: Create an event-style quest.\n" +
                 "Example: event CS2101 Oral Presentation /4-6PM, 8 Feb");

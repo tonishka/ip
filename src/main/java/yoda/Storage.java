@@ -1,10 +1,5 @@
 package yoda;
 
-import yoda.Deadline;
-import yoda.Event;
-import yoda.Quest;
-import yoda.QuestList;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -103,9 +98,13 @@ public class Storage {
         toWrite += quest.getStatus();
         toWrite += "|";
         toWrite += quest.getDescription();
-        if (!quest.getType().equals("T")) {
+        if (quest.getType().equals("E")) {
             toWrite += "|";
             toWrite += quest.getPeriod();
+        }
+        if (quest.getType().equals("D")) {
+            toWrite += "|";
+            toWrite += quest.dateToStore();
         }
         return toWrite;
     }

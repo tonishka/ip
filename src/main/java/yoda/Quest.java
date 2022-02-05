@@ -1,7 +1,7 @@
 package yoda;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 /**
@@ -16,7 +16,7 @@ public class Quest {
     private static final String UNDO = "[ ] ";
     private String type;
     private String period;
-    private LocalDateTime deadline;
+    private LocalDate date;
 
     public Quest(String description) {
         this.description = description;
@@ -47,7 +47,7 @@ public class Quest {
 
     public Quest(String description, String date) {
         this.description = description;
-        this.deadline = LocalDateTime.parse(date);
+        this.date = LocalDate.parse(date);
         this.status = 0;
         this.type = "D";
     }
@@ -76,6 +76,10 @@ public class Quest {
         return this.period;
     }
 
+    public LocalDate getDate() {
+        return this.date;
+    }
+
     @Override
     public String toString() {
         return this.description;
@@ -89,7 +93,12 @@ public class Quest {
     }
 
     public String dateToString() {
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("MMM dd yyyy HH:mm");
-        return deadline.format(dtf);
+        String str = date.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
+        return str;
+    }
+
+    public String dateToStore() {
+        String str = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return str;
     }
 }
