@@ -1,5 +1,7 @@
 package yoda;
 
+import java.util.Scanner;
+
 /**
  * Encapsulates the user interface for the chatbot.
  * @author Tonishka Singh
@@ -21,33 +23,13 @@ public class Ui {
         System.out.println("******************************************");
     }
 
-    /**private void pause() {
-        try {
-            Thread.sleep(1000);
-        } catch(InterruptedException ie) {
-            Thread.currentThread().interrupt();
-        }
-    }
-
-    private static void type(String text) {
-        int i;
-        for(i = 0; i < text.length(); i++) {
-            System.out.print("" + text.charAt(i));
-            try {
-                Thread.sleep(200);
-            } catch (InterruptedException ie) {
-                Thread.currentThread().interrupt();
-            }
-        }
-    }**/
-
     /**
      * Prints out the help message for user.
      */
     public void help() {
         System.out.println("bye: Exit.");
         System.out.println("deadline: Create a quest with a deadline.\n" +
-                "Example: deadline CS2103T Quiz /2022-12-31");
+                "Example: deadline CS2103T Quiz /2022-12-31 22:34");
         System.out.println("delete: Delete a quest.");
         System.out.println("event: Create an event-style quest.\n" +
                 "Example: event CS2101 Oral Presentation /4-6PM, 8 Feb");

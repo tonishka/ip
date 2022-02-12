@@ -80,12 +80,14 @@ public class Storage {
         String type = tokens[0];
         int status = Integer.parseInt(tokens[1]);
         String description = tokens[2];
+        String date;
         String time;
         if (type.equals("T")) {
             return new ToDo(description, status);
         } else if (type.equals("D")) {
-            time = tokens[3];
-            return new Deadline(description, time);
+            date = tokens[3];
+            time = tokens[4];
+            return new Deadline(description, date, time);
         } else {
             time = tokens[3];
             return new Event(description, time, status);
@@ -105,6 +107,8 @@ public class Storage {
         if (quest.getType().equals("D")) {
             toWrite += "|";
             toWrite += quest.dateToStore();
+            toWrite += "|";
+            toWrite += quest.timeToStore();
         }
         return toWrite;
     }
