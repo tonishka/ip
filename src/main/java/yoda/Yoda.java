@@ -1,6 +1,7 @@
 package yoda;
 
 import java.io.IOException;
+import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 import javafx.application.Application;
@@ -67,11 +68,11 @@ public class Yoda {
             } else if (command.equals("find")) {
                 find(parser.parseFind(args));
             } else if (command.equals("update_desc")) {
-
+                updateDescription(args);
             } else if (command.equals("update_period")) {
-
+                updatePeriod(args);
             } else if (command.equals("update_deadline")) {
-
+                updateDeadline(args);
             } else {
                 System.out.println("Yoda knows not what this means.");
             }
@@ -179,12 +180,65 @@ public class Yoda {
         System.out.print(q);
     }
 
-    private void updateDescription (Quest q) {
-        System.out.println("Enter new description for your quest.");
-        String updated = this.sc.nextLine();
-        q.setDescription(updated);
-        System.out.println("Quest updated:" + q.toString());
-        storage.save(questList);
+    private void updateDescription(String[] args) {
+        try {
+            int questID = parser.parseMark(args);
+            Quest q = questList.getQuest(questID);
+            System.out.println("Enter new description for your quest.");
+            String updated = this.sc.nextLine();
+            q.setDescription(updated);
+            System.out.println("Quest updated: " + q.toString());
+            storage.save(questList);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Please enter a valid quest number.");
+        } catch (IndexOutOfBoundsException ibe) {
+            System.out.println("Please enter a valid quest number.");
+        }
+    }
+
+    private void updatePeriod(String[] args) {
+        try {
+            int questID = parser.parseMark(args);
+            Quest q = questList.getQuest(questID);
+            if (!q.getType().equals("E")) {
+                throw new YodaException("This is not an event.");
+            }
+            System.out.println("Enter new period for your event.");
+            String updated = this.sc.nextLine();
+            q.setPeriod(updated);
+            System.out.println("Quest updated: " + q.toString());
+            storage.save(questList);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Please enter a valid quest number.");
+        } catch (IndexOutOfBoundsException ibe) {
+            System.out.println("Please enter a valid quest number.");
+        } catch (YodaException yodaException) {
+            System.out.println("Please enter a valid event number.");
+        }
+    }
+
+    private void updateDeadline(String[] args) {
+        try {
+            int questID = parser.parseMark(args);
+            Quest q = questList.getQuest(questID);
+            if (!q.getType().equals("D")) {
+                throw new YodaException("This is not a deadline bound quest.");
+            }
+            System.out.println("Enter new deadline for your quest.");
+            String updated = this.sc.nextLine();
+            String[] s = updated.split("\\s+");
+            q.setDeadline(s[0], s[1]);
+            System.out.println("Quest updated: " + q.toString());
+            storage.save(questList);
+        } catch (NumberFormatException nfe) {
+            System.out.println("Please enter a valid quest number.");
+        } catch (IndexOutOfBoundsException ibe) {
+            System.out.println("Please enter a valid quest number.");
+        } catch (YodaException yodaException) {
+            System.out.println("Please enter a valid deadline number.");
+        } catch (DateTimeParseException exception) {
+            System.out.println("Please retry updating by entering the deadline correctly.");
+        }
     }
 
     private void bye() {

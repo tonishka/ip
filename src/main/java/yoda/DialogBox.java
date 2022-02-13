@@ -15,7 +15,7 @@ import javafx.scene.paint.Color;
 
 public class DialogBox extends HBox {
 
-    private Label text;
+    /**private Label text;
     private ImageView displayPicture;
 
     public DialogBox(Label l, ImageView iv) {
@@ -49,5 +49,5 @@ public class DialogBox extends HBox {
         var db = new DialogBox(l, iv);
         db.flip();
         return db;
-    }
+    }**/
 }

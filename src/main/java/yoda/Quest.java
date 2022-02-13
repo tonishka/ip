@@ -73,6 +73,16 @@ public class Quest {
         this.description = description;
     }
 
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
+    public void setDeadline(String date, String time) {
+        this.date = LocalDate.parse(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        this.time = LocalTime.parse(time, formatter);
+    }
+
     @Override
     public String toString() {
         return this.description;

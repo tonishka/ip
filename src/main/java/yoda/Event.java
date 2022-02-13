@@ -14,6 +14,10 @@ public class Event extends Quest {
         return super.getDescription();
     }
 
+    public void setDescription(String description) {
+        super.setDescription(description);
+    }
+
     @Override
     public String toString() {
         String res = "[E]" + super.statusToString()
