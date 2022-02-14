@@ -14,7 +14,7 @@ public class Yoda {
     private Storage storage;
     private QuestList questList;
     private Parser parser;
-    private int updateStatus;
+    private int updateStatus; // Tracks what kind of update is under progress
     private String[] prevArgs;
 
     public Yoda() {
