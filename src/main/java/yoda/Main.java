@@ -9,7 +9,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 /**
- * A GUI for Yoda using FXML.
+ * GUI for Yoda using FXML.
  */
 public class Main extends Application {
 
