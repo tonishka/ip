@@ -8,7 +8,6 @@ import java.time.format.DateTimeFormatter;
  * Represents a quest.
  * @author Tonishka Singh
  */
-
 public class Quest {
     private String description;
     private int status;
@@ -17,16 +16,7 @@ public class Quest {
     private String type;
     private String period;
     private LocalDate date;
-
-    public Quest(String description) {
-        this.description = description;
-        this.status = 0;
-    }
-
-    public Quest(String description, int status) {
-        this.description = description;
-        this.status = status;
-    }
+    private LocalTime time;
 
     public Quest(String description, int status, String type) {
         this.description = description;
@@ -45,9 +35,11 @@ public class Quest {
         this.description = " ";
     }
 
-    public Quest(String description, String date) {
+    public Quest(String description, String date, String time) {
         this.description = description;
         this.date = LocalDate.parse(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        this.time = LocalTime.parse(time, formatter);
         this.status = 0;
         this.type = "D";
     }
@@ -59,6 +51,7 @@ public class Quest {
     public void incompleteQuest() {
         this.status = 0;
     }
+
 
     public String getType() {
         return this.type;
@@ -76,8 +69,18 @@ public class Quest {
         return this.period;
     }
 
-    public LocalDate getDate() {
-        return this.date;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
+    public void setDeadline(String date, String time) {
+        this.date = LocalDate.parse(date);
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
+        this.time = LocalTime.parse(time, formatter);
     }
 
     @Override
@@ -99,6 +102,11 @@ public class Quest {
 
     public String dateToStore() {
         String str = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        return str;
+    }
+
+    public String timeToStore() {
+        String str = time.format(DateTimeFormatter.ofPattern("HH:mm"));
         return str;
     }
 }

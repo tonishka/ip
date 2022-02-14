@@ -60,17 +60,18 @@ public class Parser {
      * @return String array of all arguments.
      */
     public String[] parseDeadline(String input) throws YodaException, ArrayIndexOutOfBoundsException {
-        String[] res = new String[2];
+        String[] res = new String[3];
         String[] period = input.split("/");
         String[] desc = period[0].split(" ");
+        String[] dateTime = period[1].split(" ");
         String s = "";
         if (desc.length <= 1) throw new YodaException("No deadline description.");
         for (int i = 1; i < desc.length; i++) {
             s += desc[i] + " ";
         }
         res[0] = s;
-        res[1] = period[1];
-
+        res[1] = dateTime[0];
+        res[2] = dateTime[1];
         return res;
     }
 
