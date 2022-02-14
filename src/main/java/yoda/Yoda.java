@@ -146,9 +146,9 @@ public class Yoda {
         String msg = "";
         try {
             int questID = parser.parseMark(args);
-            Quest q = questList.getQuest(questID);
-            q.setDescription(updated);
-            msg += "Quest updated: " + q.toString();
+            Quest quest = questList.getQuest(questID);
+            quest.setDescription(updated);
+            msg += "Quest updated: " + quest.toString();
             storage.save(questList);
         } catch (NumberFormatException nfe) {
             msg += "Please retry. Your quest number was not valid.";
@@ -162,12 +162,12 @@ public class Yoda {
         String msg = "";
         try {
             int questID = parser.parseMark(args);
-            Quest q = questList.getQuest(questID);
-            if (!q.getType().equals("E")) {
+            Quest quest = questList.getQuest(questID);
+            if (!quest.getType().equals("E")) {
                 throw new YodaException("This is not an event.");
             }
-            q.setPeriod(updated);
-            msg += "Quest updated: " + q.toString();
+            quest.setPeriod(updated);
+            msg += "Quest updated: " + quest.toString();
             storage.save(questList);
         } catch (NumberFormatException nfe) {
             msg += "Please retry. Your quest number was not valid.";
@@ -183,13 +183,13 @@ public class Yoda {
         String msg = "";
         try {
             int questID = parser.parseMark(args);
-            Quest q = questList.getQuest(questID);
-            if (!q.getType().equals("D")) {
+            Quest quest = questList.getQuest(questID);
+            if (!quest.getType().equals("D")) {
                 throw new YodaException("This is not a deadline bound quest.");
             }
             String[] s = updated.split("\\s+");
-            q.setDeadline(s[0], s[1]);
-            msg += "Quest updated: " + q.toString();
+            quest.setDeadline(s[0], s[1]);
+            msg += "Quest updated: " + quest.toString();
             storage.save(questList);
         } catch (NumberFormatException nfe) {
             msg += "Please retry. Your quest number was not valid.";
