@@ -31,10 +31,6 @@ public class Quest {
         this.period = period;
     }
 
-    public Quest() {
-        this.description = " ";
-    }
-
     public Quest(String description, String date, String time) {
         this.description = description;
         this.date = LocalDate.parse(date);

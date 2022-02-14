@@ -4,7 +4,6 @@ package yoda;
  * Represents a list of all existing quests.
  * @author Tonishka Singh
  */
-
 import java.util.ArrayList;
 
 public class QuestList {
@@ -58,5 +57,4 @@ public class QuestList {
         }
         return res;
     }
-
 }
