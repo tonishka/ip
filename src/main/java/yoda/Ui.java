@@ -26,18 +26,20 @@ public class Ui {
     /**
      * Prints out the help message for user.
      */
-    public void help() {
-        System.out.println("bye: Exit.");
-        System.out.println("deadline: Create a quest with a deadline.\n" +
-                "Example: deadline CS2103T Quiz /2022-12-31 22:34");
-        System.out.println("delete: Delete a quest.");
-        System.out.println("event: Create an event-style quest.\n" +
-                "Example: event CS2101 Oral Presentation /4-6PM, 8 Feb");
-        System.out.println("help: View commands.");
-        System.out.println("log: View all quests.");
-        System.out.println("mark: Mark quest as complete.");
-        System.out.println("todo: Create a simple quest.");
-        System.out.println("unmark: Mark a complete quest as incomplete.");
+    public String help() {
+        String msg = "";
+        msg += "deadline: Create a quest with a deadline.\n" +
+                "Example: deadline CS2103T Quiz /2022-12-31 22:34\n";
+        msg += "delete [quest_number]: Delete a quest.\n";
+        msg += "event: Create an event-style quest.\n" +
+                "Example: event CS2101 Oral Presentation /4-6PM, 8 Feb\n";
+        msg += "help: View commands.\n";
+        msg += "log: View all quests.\n";
+        msg += "mark [quest_number]: Mark quest as complete.\n";
+        msg += "todo: Create a simple quest.\n";
+        msg += "unmark [quest_number]: Mark a complete quest as incomplete.";
+
+        return msg;
     }
 
     /**
