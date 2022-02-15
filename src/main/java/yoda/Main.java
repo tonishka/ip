@@ -24,6 +24,7 @@ public class Main extends Application {
             //scene.getStylesheets().add(getClass().getResource("src/main/java/yoda/style.css").toExternalForm());
             stage.setScene(scene);
             fxmlLoader.<MainWindow>getController().setYoda(yoda);
+            stage.setTitle("YODA");
             stage.show();
         } catch (IOException e) {
             e.printStackTrace();

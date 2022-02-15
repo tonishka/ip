@@ -1,5 +1,7 @@
 package yoda;
 
+import java.util.Locale;
+
 /**
  * Parser object to make sense of user command.
  * @author Tonishka Singh
@@ -14,6 +16,7 @@ public class Parser {
      * @return Array of cleaned String arguments.
      */
     public String[] clean(String input) {
+        input = input.toLowerCase(Locale.ROOT);
         input = input.trim();
         String[] arr = input.split("\\s+");
         return arr;
