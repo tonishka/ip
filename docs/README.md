@@ -15,7 +15,7 @@ Add a Quest to your list. Quests can be of three types:
 
 ### Delete Quests
 
-Entered an incorrect Quest? Simply delete it.
+Entered an incorrect Quest? Simply delete it!
 
 ### Find Quests
 
