@@ -39,6 +39,8 @@ View a log of all your Quests.
 ### `log`
 
 Prints a log of all your Quests.
+Format:
+`log`
 
 ### `todo`
 
