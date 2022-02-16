@@ -1,7 +1,5 @@
 package yoda;
 
-import java.util.Scanner;
-
 /**
  * Encapsulates the user interface for the chatbot.
  * @author Tonishka Singh
@@ -40,17 +38,5 @@ public class Ui {
         msg += "unmark [quest_number]: Mark a complete quest as incomplete.";
 
         return msg;
-    }
-
-    /**
-     * Terminates the program and writes back data to hard disk.
-     * @param storage Storage where the data is located.
-     * @param questList Data to write back to file.
-     */
-    public void bye(Storage storage, QuestList questList) {
-        storage.save(questList);
-        System.out.println("Hrrmmm. You, Jedi, farewell I bid.");
-        System.out.println();
-        System.out.println("******************************************");
     }
 }

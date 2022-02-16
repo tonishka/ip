@@ -16,7 +16,7 @@ public class Storage {
     private String filePath;
 
     public Storage() {
-        this.dir = System.getProperty("user.dir");
+        this.dir = System.getProperty("user.dir");  // Gets the current directory
         this.filePath = dir + File.separator + "YodaData" + File.separator + "data.txt";
         this.data = new File(this.filePath);
     }
@@ -38,7 +38,7 @@ public class Storage {
         try {
             this.data.createNewFile();
         } catch (IOException e) {
-            System.out.println("An error occurred.");
+            System.out.println("An error occurred." + e.getMessage());
         }
 
         // Reads data from file and stores it in an ArrayList
@@ -47,7 +47,7 @@ public class Storage {
         try {
             fileReader = new Scanner(data);
         } catch (FileNotFoundException e) {
-            System.out.println("Whoops! File not found!");
+            System.out.println("Whoops! File not found!" + e.getMessage());
         }
 
         if(data.length() != 0) {

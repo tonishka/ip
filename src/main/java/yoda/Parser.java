@@ -8,8 +8,6 @@ import java.util.Locale;
  */
 
 public class Parser {
-    public Parser() {}
-
     /**
      * Tokenizes and cleans the input by removing extraneous spaces.
      * @param input Input string from user to clean.
@@ -68,7 +66,9 @@ public class Parser {
         String[] desc = period[0].split(" ");
         String[] dateTime = period[1].split(" ");
         String s = "";
-        if (desc.length <= 1) throw new YodaException("No deadline description.");
+        if (desc.length <= 1) {
+            throw new YodaException("No deadline description.");
+        }
         for (int i = 1; i < desc.length; i++) {
             s += desc[i] + " ";
         }
