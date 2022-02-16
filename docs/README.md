@@ -36,6 +36,14 @@ View a log of all your Quests.
 
 ## Usage
 
+### `log`
+
+Prints the log of all your Quests.
+
+Usage example:
+
+`log`
+
 ### `Keyword` - Describe action
 
 Describe the action and its outcome.
