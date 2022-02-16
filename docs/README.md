@@ -38,12 +38,19 @@ View a log of all your Quests.
 
 ### `log`
 
-Prints the log of all your Quests.
+Prints a log of all your Quests.
 
-Usage example:
+### `todo`
 
-`log`
+Creates a new Quest of type Todo.
 
+Format:
+
+`todo [TODO_DESCRIPTION]`
+
+Example:
+
+`todo laundry`
 ### `Keyword` - Describe action
 
 Describe the action and its outcome.
