@@ -50,7 +50,7 @@ Format:
 Example:
 `todo laundry`
 
-### event
+### `event`
 
 Creates a new Quest of type Event with the given description and time period.
 
