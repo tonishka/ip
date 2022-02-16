@@ -62,3 +62,21 @@ Format:
 
 Example:
 `event piano recital/4-6pm tomorrow`
+
+### `deadline`
+
+### `mark`
+
+### `unmark` 
+
+### `delete`
+
+### `help`
+
+### `find`
+
+### `update_desc`
+
+### `update_period`
+
+### `update_deadline`
