@@ -35,12 +35,12 @@ public class Quest {
         this.description = " ";
     }
 
-    public Quest(String description, String date, String time) {
+    public Quest(String description, String date, String time, int status) {
         this.description = description;
         this.date = LocalDate.parse(date);
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm");
         this.time = LocalTime.parse(time, formatter);
-        this.status = 0;
+        this.status = status;
         this.type = "D";
     }
 

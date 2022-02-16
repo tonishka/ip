@@ -87,7 +87,7 @@ public class Storage {
         } else if (type.equals("D")) {
             date = tokens[3];
             time = tokens[4];
-            return new Deadline(description, date, time);
+            return new Deadline(description, date, time, status);
         } else {
             time = tokens[3];
             return new Event(description, time, status);

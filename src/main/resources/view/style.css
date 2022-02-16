@@ -4,7 +4,8 @@
 }
 
 #dialogContainer {
-    -fx-background-image: url("/images/background.png");
+    -fx-background-image: url("/images/bg.png");
+    -fx-background-position: center;
 }
 
 #dialog {
@@ -19,4 +20,8 @@
 #sendButton {
     -fx-font-size: 12px;
     -fx-font-family: Monospace;
+    -fx-background-image: url("/images/send.png");
+    -fx-width: 76;
+    -fx-height: 41;
+    -fx-cursor: hand;
 }

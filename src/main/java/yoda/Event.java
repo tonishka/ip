@@ -21,7 +21,7 @@ public class Event extends Quest {
     @Override
     public String toString() {
         String res = "[E]" + super.statusToString()
-                + " (" + super.getPeriod() + ")";
+                + "(" + super.getPeriod() + ")";
         return res;
     }
 }
