@@ -45,11 +45,9 @@ Prints a log of all your Quests.
 Creates a new Quest of type Todo.
 
 Format:
-
 `todo [TODO_DESCRIPTION]`
 
 Example:
-
 `todo laundry`
 ### `Keyword` - Describe action
 
