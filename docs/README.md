@@ -23,12 +23,12 @@ Can't remember the name of your Quest? Find Quests in your list that match a key
 
 ### Mark Quests
 
-Finished a Quest? Hurrah! Mark it as done in your list.
+Finished a Quest? Hurrah! Mark it as done in your list. </br>
 Something came up? No worries, mark a Quest as in-progress.
 
 ### Update Quests
 
-Something about the Quest chnaged? Simply update it.
+Something about the Quest changed? Simply update it.
 
 ### View logs
 
