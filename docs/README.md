@@ -68,32 +68,58 @@ Example:
 
 Creates a new deadline bound Quest with the given description and deadline.
 
+Format:
+`deadline [DEADLINE_DESCRIPTION]/YYYY-MM-DD HH:mm`
+
 ### `mark`
 
 Marks the given incomplete Quest as complete.
+
+Format:
+`mark [QUEST_NUMBER]`
 
 ### `unmark` 
 
 Marks the given complete Quest as incomplete.
 
+Format:
+`unmark [QUEST_NUMBER]`
+
 ### `delete`
 
 Deletes the given Quest.
 
+Format:
+`delete [QUEST_NUMBER]`
+
 ### `help`
+
+Redirects you to the User Guide.
 
 ### `find`
 
 Finds all Quests that contain the given search term.
 
+Format:
+`find [KEYWORD]`
+
 ### `update_desc`
 
 Updates the description of the given Quest.
+
+Format:
+`update_desc [QUEST_NUMBER]`
 
 ### `update_period`
 
 Updates the time period of the given Event-style Quest.
 
+Format:
+`update_period [QUEST_NUMBER]`
+
 ### `update_deadline`
 
 Updates the deadline of the given Deadline type Quest.
+
+Format:
+`update_deadline [QUEST_NUMBER]`
