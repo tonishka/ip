@@ -4,7 +4,7 @@ Yoda is a Star Wars themed personal task management application.
 
 ## Features 
 
-Yoda models each task in your list as Quest. The more Quests you finish, the closer you get to defeating the Dark Lord of Sith.
+Yoda models each task in your list as a Quest. The more Quests you finish, the closer you get to defeating the Dark Lord of Sith.
 
 ### Add Quests
 
@@ -71,12 +71,18 @@ Creates a new deadline bound Quest with the given description and deadline.
 Format:
 `deadline [DEADLINE_DESCRIPTION]/YYYY-MM-DD HH:mm`
 
+Example:
+`deadline Biology Quiz/2022-02-28 23:59`
+
 ### `mark`
 
 Marks the given incomplete Quest as complete.
 
 Format:
 `mark [QUEST_NUMBER]`
+
+Example:
+`mark 7`
 
 ### `unmark` 
 
@@ -85,6 +91,9 @@ Marks the given complete Quest as incomplete.
 Format:
 `unmark [QUEST_NUMBER]`
 
+Example:
+`unmark 2`
+
 ### `delete`
 
 Deletes the given Quest.
@@ -92,9 +101,15 @@ Deletes the given Quest.
 Format:
 `delete [QUEST_NUMBER]`
 
+Example:
+`delete 1`
+
 ### `help`
 
 Redirects you to the User Guide.
+
+Format:
+`help`
 
 ### `find`
 
@@ -103,12 +118,18 @@ Finds all Quests that contain the given search term.
 Format:
 `find [KEYWORD]`
 
+Example:
+`find Quiz`
+
 ### `update_desc`
 
 Updates the description of the given Quest.
 
 Format:
 `update_desc [QUEST_NUMBER]`
+
+Example:
+`update_desc 1`
 
 ### `update_period`
 
@@ -117,9 +138,15 @@ Updates the time period of the given Event-style Quest.
 Format:
 `update_period [QUEST_NUMBER]`
 
+Example:
+`update_period 2`
+
 ### `update_deadline`
 
 Updates the deadline of the given Deadline type Quest.
 
 Format:
 `update_deadline [QUEST_NUMBER]`
+
+Example:
+`update_deadline 1`
