@@ -44,7 +44,7 @@ test {
 }
 
 application {
-    mainClassName = "yoda.Yoda"
+    mainClassName = "yoda.Launcher"
 }
 
 shadowJar {
