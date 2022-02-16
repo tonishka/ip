@@ -128,6 +128,8 @@ Updates the description of the given Quest.
 Format:
 `update_desc [QUEST_NUMBER]`
 
+- Yoda will prompt you to enter a new description for you Quest.
+
 Example:
 `update_desc 1`
 
@@ -138,6 +140,9 @@ Updates the time period of the given Event-style Quest.
 Format:
 `update_period [QUEST_NUMBER]`
 
+- This command only works if the given QUEST_NUMBER is an Event.
+- Yoda will prompt you to enter a new time period for your Event.
+
 Example:
 `update_period 2`
 
@@ -147,6 +152,9 @@ Updates the deadline of the given Deadline type Quest.
 
 Format:
 `update_deadline [QUEST_NUMBER]`
+
+- This command only works if the given QUEST_NUMBER is a Deadline.
+- Yoda will prompt you to enter a new deadline for your Deadline.
 
 Example:
 `update_deadline 1`
