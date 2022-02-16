@@ -5,8 +5,8 @@ package yoda;
  * @author Tonishka Singh
  */
 public class Deadline extends Quest {
-    public Deadline(String description, String date, String time) {
-        super(description, date, time);
+    public Deadline(String description, String date, String time, int status) {
+        super(description, date, time, status);
     }
 
     public String getDescription() {

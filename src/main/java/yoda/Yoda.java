@@ -27,6 +27,9 @@ public class Yoda {
 
     private String log() {
         String msg = "";
+        if (questList.getQuestSize() == 0) {
+            return "No quests have you, Jedi.";
+        }
         msg += "To defeat the dark lord, " +
                     "following quests must you finish, Jedi:\n";
         msg += questList.toString();
@@ -69,7 +72,7 @@ public class Yoda {
         String msg = "";
         try {
             String[] argsDeadline = parser.parseDeadline(input);
-            Deadline d = new Deadline(argsDeadline[0], argsDeadline[1], argsDeadline[2]);
+            Deadline d = new Deadline(argsDeadline[0], argsDeadline[1], argsDeadline[2], 0);
             questList.addQuest(d);
             msg += "New Quest added:" + d.toString() + "\n";
             msg += questList.numQuests() + " Quests have you now, Jedi.";
@@ -209,22 +212,31 @@ public class Yoda {
         String[] args = this.parser.clean(input);
         String command = this.parser.getCommand(args);
         if (command.equals("log")) {
+            assert this.updateStatus == 0;
             return log();
         } else if (command.equals("todo")) {
+            assert this.updateStatus == 0;
             return todo(args);
         } else if (command.equals("event")) {
+            assert this.updateStatus == 0;
             return event(input);
         } else if (command.equals("deadline")) {
+            assert this.updateStatus == 0;
             return deadline(input);
         } else if (command.equals("mark")) {
+            assert this.updateStatus == 0;
             return markDone(args);
         } else if (command.equals("unmark")) {
+            assert this.updateStatus == 0;
             return markUndone(args);
         } else if (command.equals("delete")) {
+            assert this.updateStatus == 0;
             return delete(args);
         } else if (command.equals("help")) {
+            assert this.updateStatus == 0;
             return this.ui.help();
         } else if (command.equals("find")) {
+            assert this.updateStatus == 0;
             return find(parser.parseFind(args));
         } else if (command.equals("update_desc")) {
             this.updateStatus = 1;

@@ -21,6 +21,10 @@ public class QuestList {
         return questList.get(questID);
     }
 
+    public int getQuestSize() {
+        return this.questList.size();
+    }
+
     public Quest deleteQuest(int questID) {
         Quest q = this.getQuest(questID);
         questList.remove(questID);
