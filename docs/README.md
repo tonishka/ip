@@ -65,18 +65,34 @@ Example:
 
 ### `deadline`
 
+Creates a new deadline bound Quest with the given description and deadline.
+
 ### `mark`
+
+Marks the given incomplete Quest as complete.
 
 ### `unmark` 
 
+Marks the given complete Quest as incomplete.
+
 ### `delete`
+
+Deletes the given Quest.
 
 ### `help`
 
 ### `find`
 
+Finds all Quests that contain the given search term.
+
 ### `update_desc`
+
+Updates the description of the given Quest.
 
 ### `update_period`
 
+Updates the time period of the given Event-style Quest.
+
 ### `update_deadline`
+
+Updates the deadline of the given Deadline type Quest.
