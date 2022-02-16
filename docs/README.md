@@ -42,25 +42,20 @@ Prints a log of all your Quests.
 
 ### `todo`
 
-Creates a new Quest of type Todo.
+Creates a new Quest of type Todo with the given description.
 
 Format:
 `todo [TODO_DESCRIPTION]`
 
 Example:
 `todo laundry`
-### `Keyword` - Describe action
 
-Describe the action and its outcome.
+### event
 
-Example of usage: 
+Creates a new Quest of type Event with the given description and time period.
 
-`keyword (optional arguments)`
+Format:
+`event [EVENT_DESCRIPTION]/[EVENT_TIME_PERIOD]`
 
-Expected outcome:
-
-Description of the outcome.
-
-```
-expected output
-```
+Example:
+`event piano recital/4-6pm tomorrow`
