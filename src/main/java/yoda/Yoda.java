@@ -25,28 +25,16 @@ public class Yoda {
         this.updateStatus = 0;
     }
 
-    private String log() {
-        String msg = "";
-        if (questList.getQuestSize() == 0) {
-            return "No quests have you, Jedi.";
-        }
-        msg += "To defeat the dark lord, " +
-                    "following quests must you finish, Jedi:\n";
-        msg += questList.toString();
-        return msg;
-    }
-
     private String todo(String[] args) {
         String msg = "";
         try {
             String desc = parser.getDescriptionToDo(args);
             ToDo toDo = new ToDo(desc, 0);
             questList.addQuest(toDo);
-            msg += "New Quest added:" + toDo.toString() +"\n";
-            msg += questList.numQuests() + " Quests have you now, Jedi.";
+            msg += ui.newQuestMessage(toDo, questList);
             storage.save(questList);
         } catch (YodaException ye) {
-            msg = "Description of a todo must not be empty, Jedi.";
+            msg = ui.emptyDescriptionMessage();
         }
         return msg;
     }
@@ -57,13 +45,12 @@ public class Yoda {
             String[] argsEvent = parser.parseEvent(input);
             Event e = new Event(argsEvent[0], argsEvent[1], 0);
             questList.addQuest(e);
-            msg += "New Quest added:" + e.toString() + "\n";
-            msg += questList.numQuests() + " Quests have you now, Jedi.";
+            msg += ui.newQuestMessage(e, questList);
             storage.save(questList);
         } catch (YodaException ye) {
-            msg = "Please enter a description for your quest.";
+            msg += ui.emptyDescriptionMessage();
         } catch (ArrayIndexOutOfBoundsException ex) {
-            msg = "Please enter the command in the correct format.";
+            msg = ui.incorrectFormatMessage();
         }
         return msg;
     }
@@ -74,13 +61,12 @@ public class Yoda {
             String[] argsDeadline = parser.parseDeadline(input);
             Deadline d = new Deadline(argsDeadline[0], argsDeadline[1], argsDeadline[2], 0);
             questList.addQuest(d);
-            msg += "New Quest added:" + d.toString() + "\n";
-            msg += questList.numQuests() + " Quests have you now, Jedi.";
+            msg = ui.newQuestMessage(d, questList);
             storage.save(questList);
         } catch (YodaException ye) {
-            msg += "Please enter a description for your quest.";
+            msg = ui.emptyDescriptionMessage();
         } catch (ArrayIndexOutOfBoundsException ex) {
-            msg += "Please enter the command in the correct format.";
+            msg = ui.incorrectFormatMessage();
         }
         return msg;
     }
@@ -213,7 +199,7 @@ public class Yoda {
         String command = this.parser.getCommand(args);
         if (command.equals("log")) {
             assert this.updateStatus == 0;
-            return log();
+            return ui.log(questList);
         } else if (command.equals("todo")) {
             assert this.updateStatus == 0;
             return todo(args);
