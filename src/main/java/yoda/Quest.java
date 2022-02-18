@@ -31,10 +31,6 @@ public class Quest {
         this.period = period;
     }
 
-    public Quest() {
-        this.description = " ";
-    }
-
     public Quest(String description, String date, String time, int status) {
         this.description = description;
         this.date = LocalDate.parse(date);
@@ -44,14 +40,19 @@ public class Quest {
         this.type = "D";
     }
 
+    /**
+     * Marks the Quest as complete.
+     */
     public void completeQuest() {
         this.status = 1;
     }
 
+    /**
+     * Marks the Quest as incomplete.
+     */
     public void incompleteQuest() {
         this.status = 0;
     }
-
 
     public String getType() {
         return this.type;
@@ -88,6 +89,10 @@ public class Quest {
         return this.description;
     }
 
+    /**
+     * Converts the status of the Quest to an appropriate String representation.
+     * @return String representation of the Quest and its completion status.
+     */
     public String statusToString() {
         if (this.status == 0) {
             return UNDO + this.description;
@@ -95,16 +100,28 @@ public class Quest {
         return DONE + this.description;
     }
 
+    /**
+     * Formats the date of the Quest in a user-friendly manner.
+     * @return The String representing the formatted date.
+     */
     public String dateToString() {
         String str = date.format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
         return str;
     }
 
+    /**
+     * Converts the date into a String suitable for storing in the hard drive.
+     * @return The String representing the date to store.
+     */
     public String dateToStore() {
         String str = date.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
         return str;
     }
 
+    /**
+     * Converts the time into a String suitable for storing in the hard drive.
+     * @return The String representing the date to store.
+     */
     public String timeToStore() {
         String str = time.format(DateTimeFormatter.ofPattern("HH:mm"));
         return str;

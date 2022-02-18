@@ -30,6 +30,10 @@ public class Ui {
         }
     }
 
+    /**
+     * Opens the User Guide.
+     * @param url The URL of the User Guide.
+     */
     public void openUserGuide(URL url) {
         URI uri = null;
         Desktop desktop = null;
@@ -51,7 +55,11 @@ public class Ui {
         }
     }
 
-
+    /**
+     * Displays all Quests in the User's list.
+     * @param questList User's list of Quests.
+     * @return String representation of all Quests in the list.
+     */
     public String log(QuestList questList) {
         String msg = "";
         if (questList.getQuestSize() == 0) {
@@ -70,11 +78,57 @@ public class Ui {
     }
 
     public String emptyDescriptionMessage() {
-        return "Description of a Quest must not be empty, Jedi.";
+        String s = "Description of a Quest must not be empty, Jedi.";
+        return s;
     }
 
     public String incorrectFormatMessage() {
-        return "Please enter the command in the correct format.";
+        String s = "Please enter the command in the correct format.";
+        return s;
     }
 
+    public String invalidQuestMessage() {
+        String s = "Please enter a valid quest number, Jedi.";
+        return s;
+    }
+
+    public String completeQuestMessage(QuestList questList, int questID) {
+        String s = "Done: " + questList.getQuest(questID).toString() + "\n";
+        s += "For a quest accomplished you I congratulate.";
+        return s;
+    }
+
+    public String incompleteQuestMessage(Quest q, QuestList questList) {
+        String s = "Quest removed: " + q.toString() + "\n";
+        s += questList.numQuests() + " Quests have you now, Jedi.";
+        return s;
+    }
+
+    public String noSearchResultsMessage() {
+        String s = "No task match your search, Jedi.";
+        return s;
+    }
+
+    public String searchResultsMessage(QuestList q) {
+        String s = "These are quests you requested, Jedi:\n";
+        s += q.toString();;
+        return s;
+    }
+
+    public String unsupportedCommandMessage() {
+        String s = "Yoda knows not what this means.";
+        return s;
+    }
+
+    public String updatePrompt(int type) {
+        if (type == 1) {
+            return "Enter new description for your quest.";
+        } else if (type == 2) {
+            return "Enter new period for your event.";
+        } else if (type == 3) {
+            return "Enter new deadline for your quest.";
+        } else {
+            return "";
+        }
+    }
 }

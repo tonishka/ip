@@ -76,13 +76,12 @@ public class Yoda {
         try {
             int questID = this.parser.parseMark(args);
             questList.getQuest(questID).completeQuest();
-            msg  += "Done: " + questList.getQuest(questID).toString() + "\n";
-            msg += "For a quest accomplished you I congratulate.";
+            msg += this.ui.completeQuestMessage(questList, questID);
             storage.save(questList);
         } catch (NumberFormatException nfe) {
-            msg = "Please enter a valid quest number.";
+            msg += ui.invalidQuestMessage();
         } catch (IndexOutOfBoundsException ibe) {
-            msg = "Please enter a valid quest number.";
+            msg += ui.invalidQuestMessage();
         }
         return msg;
     }
@@ -96,9 +95,9 @@ public class Yoda {
             msg += "Soldier on brave Jedi.";
             storage.save(questList);
         } catch (NumberFormatException nfe) {
-            msg += "Please enter a valid quest number.";
+            msg += ui.invalidQuestMessage();
         } catch (IndexOutOfBoundsException ibe) {
-            msg += "Please enter a valid quest number.";
+            msg += ui.invalidQuestMessage();
         }
         return msg;
     }
@@ -108,27 +107,23 @@ public class Yoda {
         try {
             int questID = parser.parseMark(args);
             Quest q = questList.deleteQuest(questID);
-            msg += "Quest removed: " + q.toString() + "\n";
-            msg += questList.numQuests() + " Quests have you now, Jedi.";
+            msg += ui.incompleteQuestMessage(q, questList);
             storage.save(questList);
         } catch (NumberFormatException nfe) {
-            msg += "Please enter a valid quest number.";
+            msg += ui.invalidQuestMessage();
         } catch (IndexOutOfBoundsException ibe) {
-            msg += "Please enter a valid quest number.";
+            msg += ui.invalidQuestMessage();
         }
         return msg;
     }
 
     private String find(String keyword) {
         ArrayList<Quest> result = questList.find(keyword);
-        String msg = "";
         if (result.size() == 0) {
-            return "No task match your search, Jedi.";
+            return ui.noSearchResultsMessage();
         }
         QuestList q = new QuestList(result);
-        msg += "These are quests you requested, Jedi:\n";
-        msg += q.toString();
-        return msg;
+        return ui.searchResultsMessage(q);
     }
 
     private String updateDescription(String[] args, String updated) {
@@ -140,9 +135,9 @@ public class Yoda {
             msg += "Quest updated: " + quest.toString();
             storage.save(questList);
         } catch (NumberFormatException nfe) {
-            msg += "Please retry. Your quest number was not valid.";
+            msg += ui.invalidQuestMessage();
         } catch (IndexOutOfBoundsException ibe) {
-            msg += "Please retry. Your quest number was not valid.";
+            msg += ui.invalidQuestMessage();
         }
         return msg;
     }
@@ -159,9 +154,9 @@ public class Yoda {
             msg += "Quest updated: " + quest.toString();
             storage.save(questList);
         } catch (NumberFormatException nfe) {
-            msg += "Please retry. Your quest number was not valid.";
+            msg += ui.invalidQuestMessage();
         } catch (IndexOutOfBoundsException ibe) {
-            msg += "Please retry. Your quest number was not valid.";
+            msg += ui.invalidQuestMessage();
         } catch (YodaException yodaException) {
             msg += "Please retry. Your quest was not an event.";
         }
@@ -181,12 +176,12 @@ public class Yoda {
             msg += "Quest updated: " + quest.toString();
             storage.save(questList);
         } catch (NumberFormatException nfe) {
-            msg += "Please retry. Your quest number was not valid.";
+            msg += ui.invalidQuestMessage();
         } catch (IndexOutOfBoundsException ibe) {
             msg += "Please retry. Either your quest number was not valid or the deadline " +
                     "was entered incorrectly.";
         } catch (YodaException yodaException) {
-            msg += "Please retry. Your quest number was not valid.";
+            msg += ui.invalidQuestMessage();
         } catch (DateTimeParseException exception) {
             msg += "Please retry updating by entering the deadline correctly.";
         }
@@ -227,11 +222,11 @@ public class Yoda {
         } else if (command.equals("update_desc")) {
             this.updateStatus = 1;
             prevArgs = this.parser.clean(input);
-            return "Enter new description for your quest.";
+            return ui.updatePrompt(1);
         } else if (command.equals("update_period")) {
             this.updateStatus = 2;
             prevArgs = this.parser.clean(input);
-            return "Enter new period for your event.";
+            return ui.updatePrompt(2);
         } else if (this.updateStatus == 1) {
             this.updateStatus = 0;
             return updateDescription(prevArgs, input);
@@ -241,12 +236,12 @@ public class Yoda {
         } else if (command.equals("update_deadline")) {
             this.updateStatus = 3;
             prevArgs = this.parser.clean(input);
-            return "Enter new deadline for your quest.";
+            return ui.updatePrompt(3);
         } else if (this.updateStatus == 3) {
             this.updateStatus = 0;
             return updateDeadline(prevArgs, input);
         } else {
-            return "Yoda knows not what this means.";
+            return ui.unsupportedCommandMessage();
         }
     }
 }

@@ -14,6 +14,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.HBox;
 import javafx.scene.image.Image;
 
+/**
+ * Represents the dialog boxes in the GUI.
+ */
 public class DialogBox extends HBox {
 
     @FXML private Label dialog;
@@ -40,10 +43,24 @@ public class DialogBox extends HBox {
         setAlignment(Pos.TOP_LEFT);
     }
 
+    /**
+     * Generates the dialog box for the
+     * user input in the GUI.
+     * @param text Text to display in label.
+     * @param img  User's avatar.
+     * @return DialogBox.
+     */
     public static DialogBox getUserDialog(String text, Image img) {
         return new DialogBox(text, img);
     }
 
+    /**
+     * Generates the dialog box for the bot's
+     * response to the user input.
+     * @param text Text to display in label.
+     * @param img Bot's avatar.
+     * @return
+     */
     public static DialogBox getYodaDialog(String text, Image img) {
         DialogBox db = new DialogBox(text, img);
         db.flip();

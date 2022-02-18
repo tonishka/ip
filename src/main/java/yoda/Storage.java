@@ -10,6 +10,10 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ * Handles reading and writing data to the disk.
+ * @author Tonishka Singh
+ */
 public class Storage {
     private File data;
     private final String dir;
@@ -21,6 +25,10 @@ public class Storage {
         this.data = new File(this.filePath);
     }
 
+    /**
+     * Loads data from the hard drive when user starts up the application.
+     * @return The loaded data in an ArrayList.
+     */
     public ArrayList<Quest> load() {
         Path path = Paths.get(dir, "YodaData");
         boolean directoryExists = Files.exists(path);
@@ -62,6 +70,10 @@ public class Storage {
         return quests;
     }
 
+    /**
+     * Saves the changes made by the user to the hard disk.
+     * @param questList The data to write back.
+     */
     public void save(QuestList questList) {
         try {
             FileWriter fileWriter = new FileWriter(this.filePath);
@@ -75,6 +87,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Converts the input into a Quest-type object.
+     * @param input String type data loaded from disk.
+     * @return Quest.
+     */
     public Quest processQuest(String input) {
         String[] tokens = input.split("\\|");
         String type = tokens[0];
@@ -94,6 +111,11 @@ public class Storage {
         }
     }
 
+    /**
+     * Coverts Quest into a String representation to store it in the disk.
+     * @param quest Quest to convert to String for storage.
+     * @return The String to write back to the storage.
+     */
     public String processQuest(Quest quest) {
         String toWrite = quest.getType();
         toWrite += "|";

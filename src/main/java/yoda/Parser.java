@@ -6,7 +6,6 @@ import java.util.Locale;
  * Parser object to make sense of user command.
  * @author Tonishka Singh
  */
-
 public class Parser {
     /**
      * Tokenizes and cleans the input by removing extraneous spaces.
@@ -24,6 +23,12 @@ public class Parser {
         return arr[0];
     }
 
+    /**
+     * Extracts the description of a todo type Quest.
+     * @param arr Striing array of input tokens.
+     * @return Description of the todo.
+     * @throws YodaException When description is missing.
+     */
     public String getDescriptionToDo(String[] arr) throws YodaException {
         String desc = "";
         if (arr.length <= 1) {

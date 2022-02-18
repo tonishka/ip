@@ -27,12 +27,8 @@ public class ParserTest {
     public void parseMarkTest() {
         Parser parser = new Parser();
         String[] arr1 = new String[2];
-        String[] arr2 = new String[2];
         arr1[0] = "argument is int";
-        arr2[0] = "argument in not int";
         arr1[1] = "5";
-        arr2[1] = "notInteger";
         assertEquals(4, parser.parseMark(arr1));
-        assertEquals(-1, parser.parseMark(arr2));
     }
 }
